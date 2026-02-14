@@ -11,41 +11,28 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole }) => {
-    const { user, isAuthenticated } = useAuthStore();
+    const { user, isAuthenticated, _hasHydrated } = useAuthStore();
     const router = useRouter();
-    const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        // Check if hydration is complete and state is restored
-        // Since zustand persist is async somewhat (sync in localstorage but hydration happens after mount)
-        // We wait a bit or just assume hydration.
-        // The persist middleware usually restores state synchronously if using localStorage before mount? No.
-        // Zustand persist restores asynchronously in some versions.
-        // But since we use `create(persist(...))`, the state might be ready on mount?
-        // Let's assume standard behavior.
+        if (!_hasHydrated) return;
 
-        const checkAuth = () => {
-            // Simple check
-            if (!isAuthenticated) {
-                router.push('/login');
-                return;
-            }
+        if (!isAuthenticated) {
+            router.push('/auth/login');
+            return;
+        }
 
-            if (requiredRole && user?.role !== requiredRole) {
-                router.push('/'); // Unauthorized
-                return;
-            }
+        if (requiredRole && user?.role !== requiredRole) {
+            router.push('/');
+        }
+    }, [_hasHydrated, isAuthenticated, user, requiredRole, router]);
 
-            setLoading(false);
-        };
+    if (!_hasHydrated) {
+        return <Loader />;
+    }
 
-        // Small timeout to allow zustand to hydrate if needed
-        const timeout = setTimeout(checkAuth, 100);
-        return () => clearTimeout(timeout);
-
-    }, [isAuthenticated, user, requiredRole, router]);
-
-    if (loading) {
+    // While redirecting, show loader or nothing
+    if (!isAuthenticated || (requiredRole && user?.role !== requiredRole)) {
         return <Loader />;
     }
 

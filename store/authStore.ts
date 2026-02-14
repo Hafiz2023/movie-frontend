@@ -1,28 +1,35 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { User, AuthState } from '../types';
 
-interface AuthStateAction extends AuthState {
-    setUser: (user: User | null) => void;
-    setToken: (token: string | null) => void;
+interface AuthStore extends Omit<AuthState, 'login' | 'logout'> {
     login: (user: User, token: string) => void;
     logout: () => void;
+    setUser: (user: User | null) => void;
+    setToken: (token: string | null) => void;
+    _hasHydrated: boolean;
+    setHasHydrated: (state: boolean) => void;
 }
 
-const useAuthStore = create<AuthStateAction>()(
+const useAuthStore = create<AuthStore>()(
     persist(
         (set) => ({
             user: null,
             token: null,
             isAuthenticated: false,
+            _hasHydrated: false,
             setUser: (user) => set({ user }),
             setToken: (token) => set({ token, isAuthenticated: !!token }),
             login: (user, token) => set({ user, token, isAuthenticated: true }),
             logout: () => set({ user: null, token: null, isAuthenticated: false }),
+            setHasHydrated: (state) => set({ _hasHydrated: state }),
         }),
         {
-            name: 'auth-storage', // name of the item in the storage (must be unique)
-            // getStorage: () => localStorage, // optional, defaults to 'localStorage'
+            name: 'auth-storage',
+            storage: createJSONStorage(() => localStorage),
+            onRehydrateStorage: () => (state) => {
+                state?.setHasHydrated(true);
+            },
         }
     )
 );

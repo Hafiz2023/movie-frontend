@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '../utils/constants';
+import useAuthStore from '@/store/authStore';
 
 const api = axios.create({
     baseURL: API_URL,
@@ -10,7 +11,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('token');
+        const token = useAuthStore.getState().token;
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -25,9 +26,10 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            window.location.href = '/login';
+            useAuthStore.getState().logout();
+            if (typeof window !== 'undefined') {
+                window.location.href = '/auth/login';
+            }
         }
         return Promise.reject(error);
     }

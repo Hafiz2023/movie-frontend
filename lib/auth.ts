@@ -1,46 +1,22 @@
-import { jwtDecode } from 'jwt-decode';
 
-export interface DecodedToken {
-    role: string;
-    sub: string;
-    exp: number;
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-change-this-in-production';
+
+export interface TokenPayload {
+    userId: number;
+    role?: string;
 }
 
-export const getToken = (): string | null => {
-    if (typeof window !== 'undefined') {
-        return localStorage.getItem('token');
-    }
-    return null;
+export const signToken = (payload: TokenPayload): string => {
+    return jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' });
 };
 
-export const setToken = (token: string) => {
-    if (typeof window !== 'undefined') {
-        localStorage.setItem('token', token);
-    }
-};
-
-export const clearToken = () => {
-    if (typeof window !== 'undefined') {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-    }
-}
-
-export const isTokenValid = (token: string): boolean => {
+export const verifyToken = (token: string): TokenPayload | null => {
     try {
-        const decoded = jwtDecode<DecodedToken>(token);
-        const currentTime = Date.now() / 1000;
-        return decoded.exp > currentTime;
-    } catch (error) {
-        return false;
-    }
-}
-
-export const getUserRole = (token: string): string | null => {
-    try {
-        const decoded = jwtDecode<DecodedToken>(token);
-        return decoded.role;
+        const decoded = jwt.verify(token, JWT_SECRET) as TokenPayload;
+        return decoded;
     } catch (error) {
         return null;
     }
-}
+};

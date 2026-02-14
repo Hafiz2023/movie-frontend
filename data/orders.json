@@ -1,0 +1,53 @@
+[
+  {
+    "plan": "VIP Access",
+    "price": 29.99,
+    "cycle": "monthly",
+    "paymentMethod": "easypaisa",
+    "userInfo": {
+      "name": "adil",
+      "email": "adilamin374@gmail.com",
+      "phone": "03204338215",
+      "cardNumber": "",
+      "expiry": "",
+      "cvc": ""
+    },
+    "status": "completed",
+    "id": 1771046145528,
+    "createdAt": "2026-02-14T05:15:45.528Z"
+  },
+  {
+    "plan": "Fan Club",
+    "price": 9.99,
+    "cycle": "monthly",
+    "paymentMethod": "jazzcash",
+    "userInfo": {
+      "name": "Hafiz ",
+      "email": "adilamin374@gmail.com",
+      "phone": "03204338215",
+      "cardNumber": "",
+      "expiry": "",
+      "cvc": ""
+    },
+    "status": "completed",
+    "id": 1771046383058,
+    "createdAt": "2026-02-14T05:19:43.058Z"
+  },
+  {
+    "plan": "VIP Access",
+    "price": 29.99,
+    "cycle": "monthly",
+    "paymentMethod": "easypaisa",
+    "user": {
+      "name": "adil",
+      "email": "adilamin374@gmail.com",
+      "phone": "03204338215",
+      "cardNumber": "",
+      "expiry": "",
+      "cvc": ""
+    },
+    "status": "completed",
+    "id": 1771046544302,
+    "createdAt": "2026-02-14T05:22:24.302Z"
+  }
+]
