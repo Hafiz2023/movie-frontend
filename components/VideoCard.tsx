@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Eye, Clock, ThumbsUp, Play, MoreVertical } from 'lucide-react';
+import {  Play, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -61,7 +61,7 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
             <div className={cn(
                 "relative bg-muted overflow-hidden rounded-xl aspect-video w-full transition-all duration-300",
                 isHovered && "ring-2 ring-primary/50 shadow-lg shadow-primary/10",
-                variant === 'horizontal' && "w-40 sm:w-60 flex-shrink-0"
+                variant === 'horizontal' && "w-40 sm:w-60 "
             )}>
                 {/* Main Image */}
                 <Image
@@ -114,7 +114,7 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
             <div className="flex gap-3 px-1">
                 {variant !== 'horizontal' && (
                     <Link href={`/author/${video.author}`} onClick={(e) => e.stopPropagation()} className="relative z-20">
-                        <Avatar className="w-9 h-9 border border-border/10 mt-0.5 flex-shrink-0 hover:border-primary transition-colors cursor-pointer">
+                        <Avatar className="w-9 h-9 border border-border/10 mt-0.5  hover:border-primary transition-colors cursor-pointer">
                             <AvatarImage src={video.author_avatar} alt={video.author} />
                             <AvatarFallback>{video.author?.[0] || 'U'}</AvatarFallback>
                         </Avatar>

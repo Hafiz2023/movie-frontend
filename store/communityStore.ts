@@ -1,15 +1,5 @@
 import { create } from 'zustand';
-
-export interface Post {
-    id: number;
-    user: string;
-    avatar: string;
-    time: string;
-    content: string;
-    likes: number;
-    comments: number;
-    tags: string[];
-}
+import { Post } from '@/types';
 
 interface CommunityState {
     posts: Post[];

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Edit, Trash2 } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
+import { AdminVideo } from '@/types';
+
 interface VideoTableProps {
-    videos: any[];
-    onEdit: (video: any) => void;
-    onDelete: (video: any) => void;
+    videos: AdminVideo[];
+    onEdit: (video: AdminVideo) => void;
+    onDelete: (video: AdminVideo) => void;
 }
 
 export default function VideoTable({ videos, onEdit, onDelete }: VideoTableProps) {
@@ -31,8 +34,8 @@ export default function VideoTable({ videos, onEdit, onDelete }: VideoTableProps
                                 <tr key={video.id} className="hover:bg-secondary/20 transition-colors">
                                     <td className="px-6 py-4 font-medium text-foreground">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-6 bg-slate-800 rounded overflow-hidden hidden sm:block">
-                                                <img src={video.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                                            <div className="w-10 h-6 bg-slate-800 rounded overflow-hidden hidden sm:block relative">
+                                                <Image src={video.thumbnail_url} alt="" fill className="object-cover" />
                                             </div>
                                             <span className="line-clamp-1">{video.title}</span>
                                         </div>

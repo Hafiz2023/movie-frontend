@@ -47,8 +47,8 @@ export default function HeroSlider() {
                         unoptimized
                     />
                     {/* Cinematic Gradients */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-90" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent opacity-90" />
+                    <div className="absolute inset-0  from-background via-background/40 to-transparent opacity-90" />
+                    <div className="absolute inset-0  from-background via-background/60 to-transparent opacity-90" />
                     <div className="absolute inset-0 bg-black/20" /> {/* General overlay for text contrast */}
                 </motion.div>
             </AnimatePresence>
@@ -114,7 +114,7 @@ export default function HeroSlider() {
                         href={`/watch/${currentVideo.id}`}
                         className="group relative flex items-center justify-center gap-2 sm:gap-3 bg-primary hover:bg-primary/90 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/30 overflow-hidden w-full sm:w-auto"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-15deg] translate-x-[-200%] animate-[shine_3s_infinite]" />
+                        <div className="absolute inset-0  from-transparent via-white/20 to-transparent skew-x-[-15deg] translate-x-[-200%] animate-[shine_3s_infinite]" />
                         <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
                         Watch Video
                     </Link>

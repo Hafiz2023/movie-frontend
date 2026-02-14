@@ -1,180 +1,167 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Mail, MessageSquare, Phone, MapPin, Send } from 'lucide-react';
-import InfoPageLayout from '@/components/layout/InfoPageLayout';
-import { toast } from 'react-toastify';
-import axios from 'axios';
+import { useState } from 'react';
 
 export default function ContactPage() {
-    return (
-        <InfoPageLayout title="Contact Support">
-            <p className="text-xl text-muted-foreground mb-8">
-                We're here to help. Whether you have a question about our premium plans, need technical assistance, or want to report an issue, our team is ready to assist you.
-            </p>
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: 'General Inquiry',
+    message: '',
+  });
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div className="space-y-8">
-                    <div className="flex items-start gap-4 p-6 bg-secondary/20 rounded-xl border border-border">
-                        <Mail className="w-8 h-8 text-primary mt-1" />
-                        <div>
-                            <h3 className="text-lg font-bold mb-1">Email Us</h3>
-                            <p className="text-muted-foreground mb-2">For general inquiries and support.</p>
-                            <a href="mailto:support@movieapp.com" className="text-primary hover:underline font-semibold">support@movieapp.com</a>
-                        </div>
-                    </div>
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
-                    <div className="flex items-start gap-4 p-6 bg-secondary/20 rounded-xl border border-border">
-                        <Phone className="w-8 h-8 text-primary mt-1" />
-                        <div>
-                            <h3 className="text-lg font-bold mb-1">Call Us</h3>
-                            <p className="text-muted-foreground mb-2">Mon-Fri from 9am to 6pm.</p>
-                            <a href="tel:+15550000000" className="text-primary hover:underline font-semibold">+1 (555) 000-0000</a>
-                        </div>
-                    </div>
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-                    <div className="flex items-start gap-4 p-6 bg-secondary/20 rounded-xl border border-border">
-                        <MessageSquare className="w-8 h-8 text-primary mt-1" />
-                        <div>
-                            <h3 className="text-lg font-bold mb-1">Live Chat</h3>
-                            <p className="text-muted-foreground mb-2">Chat with our support team in real-time.</p>
-                            <button className="text-primary hover:underline font-semibold">Start Chat</button>
-                        </div>
-                    </div>
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
 
-                    <div className="flex items-start gap-4 p-6 bg-secondary/20 rounded-xl border border-border">
-                        <MapPin className="w-8 h-8 text-primary mt-1" />
-                        <div>
-                            <h3 className="text-lg font-bold mb-1">Corporate Office</h3>
-                            <p className="text-muted-foreground">
-                                123 Premium Content Blvd<br />
-                                Los Angeles, CA 90028<br />
-                                USA
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    try {
+      // Fake delay (simulate API)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
-                <div className="bg-card border border-border p-8 rounded-xl shadow-lg">
-                    <h3 className="text-xl font-bold mb-6">Send us a Message</h3>
-                    <ContactForm />
-                </div>
-            </div>
-        </InfoPageLayout>
-    );
-}
+      console.log('Form Data:', formData);
 
-function ContactForm() {
-    const [formData, setFormData] = useState({
+      setMessage('Message sent successfully!');
+      setFormData({
         name: '',
         email: '',
         phone: '',
         subject: 'General Inquiry',
-        message: ''
-    });
-    const [isLoading, setIsLoading] = useState(false);
+        message: '',
+      });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      setMessage('Failed to send message.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  return (
+    <div style={styles.container}>
+      <div style={styles.card}>
+        <h2>Contact Support</h2>
+        <p style={styles.subtitle}>
+          Have questions? Send us a message and we’ll respond soon.
+        </p>
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
+        <form onSubmit={handleSubmit} style={styles.form}>
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            type="text"
+            placeholder="Your Name"
+            style={styles.input}
+          />
 
-        try {
-            await axios.post('/api/contact', formData);
-            toast.success('Message sent successfully!');
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                subject: 'General Inquiry',
-                message: ''
-            });
-        } catch (error) {
-            console.error(error);
-            toast.error('Failed to send message. Please try again.');
-        } finally {
-            setIsLoading(false);
-        }
-    };
+          <input
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            type="email"
+            placeholder="Your Email"
+            style={styles.input}
+          />
 
-    return (
-        <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium">Name</label>
-                    <input
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        type="text"
-                        className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm focus:border-primary outline-none"
-                        placeholder="Your name"
-                    />
-                </div>
-                <div className="space-y-2">
-                    <label className="text-sm font-medium">Email</label>
-                    <input
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        type="email"
-                        className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm focus:border-primary outline-none"
-                        placeholder="your@email.com"
-                    />
-                </div>
-            </div>
+          <input
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            type="tel"
+            placeholder="Phone Number"
+            style={styles.input}
+          />
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium">Phone Number</label>
-                <input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    type="tel"
-                    className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm focus:border-primary outline-none"
-                    placeholder="+1 (555) 000-0000"
-                />
-            </div>
+          <select
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            style={styles.input}
+          >
+            <option>General Inquiry</option>
+            <option>Billing Issue</option>
+            <option>Technical Support</option>
+            <option>Partnership</option>
+          </select>
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium">Subject</label>
-                <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm focus:border-primary outline-none"
-                >
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Billing Issue">Billing Issue</option>
-                    <option value="Technical Support">Technical Support</option>
-                    <option value="Content Report">Content Report</option>
-                    <option value="Partnership">Partnership</option>
-                </select>
-            </div>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            placeholder="Your Message..."
+            style={{ ...styles.input, height: '120px' }}
+          />
 
-            <div className="space-y-2">
-                <label className="text-sm font-medium">Message</label>
-                <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm focus:border-primary outline-none min-h-[150px]"
-                    placeholder="How can we help you?..."
-                ></textarea>
-            </div>
+          <button type="submit" disabled={loading} style={styles.button}>
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
 
-            <button
-                disabled={isLoading}
-                className="w-full bg-primary text-primary-foreground font-bold py-3 rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
-            >
-                <Send className="w-4 h-4" /> {isLoading ? 'Sending...' : 'Send Message'}
-            </button>
+          {message && <p style={styles.message}>{message}</p>}
         </form>
-    );
+      </div>
+    </div>
+  );
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const styles: any = {
+  container: {
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#111',
+    padding: '20px',
+  },
+  card: {
+    background: '#1f1f1f',
+    padding: '40px',
+    borderRadius: '12px',
+    width: '400px',
+    color: '#fff',
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: '14px',
+    marginBottom: '20px',
+    color: '#aaa',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+  },
+  input: {
+    padding: '10px',
+    borderRadius: '6px',
+    border: '1px solid #333',
+    background: '#2a2a2a',
+    color: '#fff',
+  },
+  button: {
+    padding: '10px',
+    borderRadius: '6px',
+    border: 'none',
+    background: '#ff4c29',
+    color: '#fff',
+    cursor: 'pointer',
+  },
+  message: {
+    marginTop: '10px',
+    fontSize: '14px',
+  },
+};

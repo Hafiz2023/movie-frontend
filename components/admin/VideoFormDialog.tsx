@@ -4,12 +4,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogD
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
+import { AdminVideo, VideoFormData } from '@/types';
+
 interface VideoFormDialogProps {
     isOpen: boolean;
     onOpenChange: (open: boolean) => void;
-    currentVideo: any;
-    formData: any;
-    setFormData: (data: any) => void;
+    currentVideo: AdminVideo | null;
+    formData: VideoFormData;
+    setFormData: (data: VideoFormData) => void;
     onSave: (e: React.FormEvent) => void;
     isLoading: boolean;
 }

@@ -1,3 +1,4 @@
+
 export interface User {
     id: number;
     email: string;
@@ -104,4 +105,49 @@ export interface LoginResponse {
     access_token: string;
     token_type: string;
     user: User;
+}
+
+export interface AdminVideo {
+    id: number;
+    title: string;
+    description?: string;
+    category: string;
+    thumbnail_url: string;
+    video_url?: string;
+    views: string | number;
+    likes?: string | number;
+    author?: string;
+    author_avatar?: string;
+    date?: string;
+    duration?: string;
+    tags?: string[];
+    status?: string;
+}
+
+export interface VideoFormData {
+    title: string;
+    category: string;
+    thumbnail_url: string;
+    video_url: string;
+}
+
+export interface Post {
+    id: number;
+    user: string;
+    avatar: string;
+    time: string;
+    content: string;
+    tags: string[];
+    likes: number;
+    comments: number;
+}
+
+export interface LiveStream {
+    id: number;
+    user: string;
+    viewers: number;
+    thumbnail: string;
+    description: string;
+    tags: string[];
+    price: number;
 }

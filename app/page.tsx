@@ -23,7 +23,7 @@ import HeroSlider from '@/components/HeroSlider';
 
 // ... (imports)
 
-export default function Home() {
+function HomeContent() {
   const { isSidebarOpen, closeSidebar, toggleSidebar } = useUIStore();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search')?.toLowerCase() || '';
@@ -176,5 +176,13 @@ export default function Home() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <HomeContent />
+    </React.Suspense>
   );
 }
