@@ -13,7 +13,6 @@ export async function GET() {
     }
 }
 
-// ... (imports)
 
 export async function POST(req: Request) {
     try {
