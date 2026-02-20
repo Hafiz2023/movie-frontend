@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, MessageCircle, ZoomIn, Download, User, Share2 } from 'lucide-react';
+import { Heart, MessageCircle, ZoomIn, Share2 } from 'lucide-react';
 import Image from 'next/image';
 import { Photo } from '@/types';
 

@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import { Camera } from 'lucide-react';
-import { PhotoCard, Photo } from '@/components/photos/PhotoCard';
+import { PhotoCard } from '@/components/photos/PhotoCard';
+import { Photo } from '@/types';
 import { PhotoFilter } from '@/components/photos/PhotoFilter';
 import { PhotoLightbox } from '@/components/photos/PhotoLightbox';
 
