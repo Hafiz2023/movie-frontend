@@ -1,4 +1,4 @@
-import { ShortVideo, Plan } from '../types';
+import { ShortVideo, Plan, Model } from '../types';
 
 export const MOCK_SHORTS: ShortVideo[] = [
     {
@@ -81,7 +81,7 @@ export const MOCK_PLANS: Plan[] = [
     }
 ];
 
-export const MOCK_MODELS = [
+export const MOCK_MODELS: Model[] = [
     {
         id: 1,
         name: "Mia Khalifa",

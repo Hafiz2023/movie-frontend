@@ -59,6 +59,7 @@ export default function LoginPage() {
             } else {
                 router.push('/dashboard');
             }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             toast.error(error.message || 'Login failed');
         } finally {
@@ -85,6 +86,7 @@ export default function LoginPage() {
             login(googleUser, 'mock-google-token');
             toast.success('Successfully returned with Google!');
             router.push('/');
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Google sign in failed. Please try again.');
         } finally {
@@ -97,7 +99,7 @@ export default function LoginPage() {
 
             {/* Left Side - Hero / Visuals (Hidden on mobile) */}
             <div className="hidden lg:flex w-1/2 relative bg-black items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-10 bg-gradient-to-tr from-primary/40 to-black/80 mix-blend-multiply" />
+                <div className="absolute inset-0 z-10  from-primary/40 to-black/80 mix-blend-multiply" />
                 <Image
                     src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop"
                     alt="Movie Theater"
@@ -134,7 +136,7 @@ export default function LoginPage() {
                     className="w-full max-w-md space-y-8"
                 >
                     <div className="text-center lg:text-left">
-                        <Link href="/" className="inline-block text-2xl font-bold bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent mb-8">
+                        <Link href="/" className="inline-block text-2xl font-bold from-primary to-orange-500 bg-clip-text text-transparent mb-8">
                             MovieApp
                         </Link>
                         <h2 className="text-4xl font-bold tracking-tight text-foreground mb-2">Sign In</h2>
@@ -260,7 +262,7 @@ export default function LoginPage() {
                     </form>
 
                     <p className="text-center text-sm text-muted-foreground pt-4">
-                        Don't have an account?{' '}
+                        Dont have an account?{' '}
                         <Link href="/auth/register" className="font-semibold text-primary hover:text-primary/80 hover:underline transition-all">
                             Sign up for free
                         </Link>

@@ -143,7 +143,7 @@ export default function StudioTab() {
                             <Upload className="w-4 h-4" /> Upload Video
                         </Button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[500px] bg-card border-border">
+                    <DialogContent className=" bg-card border-border">
                         <DialogHeader>
                             <DialogTitle>{currentVideo ? 'Edit Video' : 'Upload New Video'}</DialogTitle>
                         </DialogHeader>
@@ -220,9 +220,7 @@ export default function StudioTab() {
                         userVideos.map((video) => (
                             <div key={video.id} className="grid grid-cols-12 gap-4 p-4 items-center hover:bg-secondary/20 transition-colors">
                                 <div className="col-span-6 flex gap-4">
-                                    <div className="h-16 w-28 rounded-md overflow-hidden bg-muted relative shrink-0">
-                                        <img src={video.thumbnail || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"} alt={video.title} className="object-cover w-full h-full" />
-                                    </div>
+
                                     <div className="min-w-0">
                                         <p className="font-semibold truncate">{video.title}</p>
                                         <div className="flex items-center gap-2 mt-1">

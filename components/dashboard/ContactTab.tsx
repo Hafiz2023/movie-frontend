@@ -127,7 +127,7 @@ export default function ContactTab() {
                                     id="message"
                                     value={ticketForm.message}
                                     onChange={(e) => setTicketForm({ ...ticketForm, message: e.target.value })}
-                                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="flex  w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                     placeholder="Describe your issue or question..."
                                     required
                                 />
@@ -186,7 +186,7 @@ export default function ContactTab() {
 
             {/* Ticket Details Dialog */}
             <Dialog open={isTicketDialogOpen} onOpenChange={setIsTicketDialogOpen}>
-                <DialogContent className="sm:max-w-[500px] bg-card border-border">
+                <DialogContent className=" bg-card border-border">
                     <DialogHeader>
                         <DialogTitle>Message Details</DialogTitle>
                         <DialogDescription>
@@ -211,7 +211,7 @@ export default function ContactTab() {
                             )}
                             <div className="grid gap-1">
                                 <span className="text-sm font-semibold text-muted-foreground">Message Body</span>
-                                <div className="p-4 bg-secondary/20 rounded-lg text-sm leading-relaxed border border-border/50 max-h-[300px] overflow-y-auto">
+                                <div className="p-4 bg-secondary/20 rounded-lg text-sm leading-relaxed border border-border/50 overflow-y-auto">
                                     {selectedTicket.message}
                                 </div>
                             </div>

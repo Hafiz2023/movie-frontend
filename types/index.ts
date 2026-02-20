@@ -151,3 +151,22 @@ export interface LiveStream {
     tags: string[];
     price: number;
 }
+
+export interface Model {
+    id: number;
+    name: string;
+    rank: number;
+    videos: number;
+    views: string;
+    avatar: string;
+}
+
+export interface Photo {
+    id: number;
+    src: string;
+    likes: number;
+    comments: number;
+    user: string;
+    title: string;
+    tags: string[];
+}

@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Shield, CreditCard } from 'lucide-react';
 import { toast } from 'react-toastify';
@@ -125,7 +125,7 @@ export default function BillingTab() {
 
             {/* Order Details Dialog */}
             <Dialog open={isOrderDialogOpen} onOpenChange={setIsOrderDialogOpen}>
-                <DialogContent className="sm:max-w-[500px] bg-card border-border">
+                <DialogContent className=" bg-card border-border">
                     <DialogHeader>
                         <DialogTitle>Order Details</DialogTitle>
                         <DialogDescription>

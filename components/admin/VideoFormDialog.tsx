@@ -27,7 +27,7 @@ export default function VideoFormDialog({
 }: VideoFormDialogProps) {
     return (
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="">
                 <DialogHeader>
                     <DialogTitle>{currentVideo ? 'Edit Video' : 'Upload New Video'}</DialogTitle>
                     <DialogDescription>
