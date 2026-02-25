@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
         // Generate a new ID (Mock Auto Increment)
         const users = getUsers();
-        const newId = users.length > 0 ? Math.max(...users.map((u: any) => u.id)) + 1 : 1;
+        const newId = users.length > 0 ? Math.max(...users.map((u: { id: number }) => u.id)) + 1 : 1;
 
         const user = {
             id: newId,
@@ -52,11 +52,12 @@ export async function POST(req: Request) {
             token
         }, { status: 201 });
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Registration critical error:", error);
+        const message = error instanceof Error ? error.message : 'Unknown error';
         return NextResponse.json({
             error: 'Internal server error',
-            details: error.message
+            details: message
         }, { status: 500 });
     }
 }

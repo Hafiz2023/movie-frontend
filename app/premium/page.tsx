@@ -10,8 +10,8 @@ import { PremiumCTA } from '@/components/premium/PremiumCTA';
 
 export default function PremiumPage() {
     const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
-    const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
-    const [isProcessing, setIsProcessing] = useState(false);
+    const selectedPlan: string | null = null;
+    const isProcessing = false;
 
     const router = useRouter();
 

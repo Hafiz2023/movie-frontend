@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Play, Clock, Heart, Bell } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -88,7 +89,7 @@ export default function OverviewTab() {
                         {MOCK_VIDEOS.slice(0, 3).map((video) => (
                             <div key={video.id} className="flex items-center gap-3 group cursor-pointer hover:bg-secondary/50 p-2 rounded-lg transition-colors">
                                 <div className="h-16 w-28 rounded-md overflow-hidden bg-muted relative">
-                                    <img src={video.thumbnail_url} alt={video.title} className="object-cover w-full h-full" />
+                                    <Image src={video.thumbnail_url} alt={video.title} fill className="object-cover" sizes="112px" unoptimized />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <p className="text-sm font-medium leading-none truncate group-hover:text-primary transition-colors">{video.title}</p>

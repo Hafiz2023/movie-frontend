@@ -1,4 +1,4 @@
-import { ShortVideo, Plan, Model } from '../types';
+import { ShortVideo, Plan, Model, MockVideo } from '../types';
 
 export const MOCK_SHORTS: ShortVideo[] = [
     {
@@ -148,7 +148,7 @@ export const MOCK_MODELS: Model[] = [
     }
 ];
 
-export const MOCK_VIDEOS = [
+export const MOCK_VIDEOS: MockVideo[] = [
     {
         id: 1,
         title: "Hot Teen Neighbor Caught",
@@ -343,5 +343,65 @@ export const MOCK_VIDEOS = [
         video_url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         description: "A spontaneous adventure in the car late at night.",
         tags: ["Car", "Public", "Outdoor"]
+    },
+    {
+        id: 14,
+        title: "Live Cam Show - Friday Night Special",
+        thumbnail_url: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2070&auto=format&fit=crop",
+        duration: "1:02:30",
+        author: "Mia Khalifa",
+        author_avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop",
+        views: "4.2M",
+        date: "1 day ago",
+        category: "Live Cams",
+        likes: "89K",
+        video_url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        description: "Join me for an exclusive Friday night live cam show. Tips keep the show going!",
+        tags: ["Live Cams", "CamShow", "Live", "Interactive"]
+    },
+    {
+        id: 15,
+        title: "Live Private Cam Session",
+        thumbnail_url: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2070&auto=format&fit=crop",
+        duration: "45:15",
+        author: "Lana Rhoades",
+        author_avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop",
+        views: "2.8M",
+        date: "3 days ago",
+        category: "Live Cams",
+        likes: "52K",
+        video_url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        description: "An intimate private cam session recorded live. Fan-requested special edition.",
+        tags: ["Live Cams", "Private", "CamShow", "Exclusive"]
+    },
+    {
+        id: 16,
+        title: "Interactive Live Cam Party",
+        thumbnail_url: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop",
+        duration: "1:30:00",
+        author: "Eva Elfie",
+        author_avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=100&auto=format&fit=crop",
+        views: "1.5M",
+        date: "5 days ago",
+        category: "Live Cams",
+        likes: "34K",
+        video_url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        description: "Interactive live cam party with viewer-controlled actions. The audience decides!",
+        tags: ["Live Cams", "Interactive", "Party", "CamShow"]
+    },
+    {
+        id: 17,
+        title: "Late Night Live Cam Stream",
+        thumbnail_url: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+        duration: "55:40",
+        author: "Angela White",
+        author_avatar: "https://images.unsplash.com/photo-1616594039964-40891a9046c9?q=80&w=100&auto=format&fit=crop",
+        views: "3.1M",
+        date: "2 days ago",
+        category: "Live Cams",
+        likes: "67K",
+        video_url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        description: "A steamy late night live cam stream. Viewer tips unlocked special surprises throughout the night.",
+        tags: ["Live Cams", "Late Night", "Stream", "CamShow"]
     }
 ];

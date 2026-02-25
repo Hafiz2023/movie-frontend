@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Film, Ghost } from 'lucide-react';
+import { Ghost, Home, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
     return (
@@ -23,7 +24,7 @@ export default function NotFound() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-5xl font-bold tracking-tight text-foreground"
+                    className="text-7xl font-black tracking-tight bg-gradient-to-b from-foreground to-foreground/50 bg-clip-text text-transparent"
                 >
                     404
                 </motion.h1>
@@ -33,7 +34,7 @@ export default function NotFound() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-xl font-medium text-foreground"
                 >
-                    Video Not Found
+                    Page Not Found
                 </motion.p>
                 <motion.p
                     initial={{ y: 20, opacity: 0 }}
@@ -41,11 +42,27 @@ export default function NotFound() {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="text-muted-foreground max-w-md mx-auto"
                 >
-                    The video you are looking for might have been deleted, or the link is broken.
+                    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
                 </motion.p>
             </div>
 
-
+            <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex flex-col sm:flex-row gap-4 mt-4"
+            >
+                <Button onClick={() => window.history.back()} variant="outline" size="lg" className="min-w-40 gap-2">
+                    <ArrowLeft className="w-4 h-4" />
+                    Go Back
+                </Button>
+                <Link href="/">
+                    <Button size="lg" className="min-w-40 gap-2 font-bold">
+                        <Home className="w-4 h-4" />
+                        Go Home
+                    </Button>
+                </Link>
+            </motion.div>
         </div>
     );
 }

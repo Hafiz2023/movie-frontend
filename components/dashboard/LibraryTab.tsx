@@ -1,6 +1,6 @@
 
 import React from 'react';
-import VideoCard from '@/components/VideoCard';
+import VideoCard from '@/components/video/VideoCard';
 import { MOCK_VIDEOS } from '@/utils/mockData';
 
 export default function LibraryTab() {

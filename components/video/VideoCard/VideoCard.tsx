@@ -1,9 +1,12 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
-import {  Play, MoreVertical } from 'lucide-react';
+import { Play, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { motion } from 'framer-motion';
 
 interface VideoCardProps {
     video: {
@@ -23,7 +26,7 @@ interface VideoCardProps {
     variant?: 'vertical' | 'horizontal';
 }
 
-export default function VideoCard({ video, className, variant = 'vertical' }: VideoCardProps) {
+const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) => {
     const [isHovered, setIsHovered] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
     const isHighDef = video.id % 3 !== 0;
@@ -33,10 +36,9 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
         let timeout: NodeJS.Timeout;
 
         if (isHovered && videoRef.current && video.video_url) {
-            // Add a small delay before playing to prevent flickering on quick mouse movements
             timeout = setTimeout(() => {
                 videoRef.current?.play().catch(() => { });
-            }, 500);
+            }, 400); // Slightly faster than before
         } else if (videoRef.current) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
@@ -46,9 +48,11 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
     }, [isHovered, video.video_url]);
 
     return (
-        <div
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             className={cn(
-                "group relative flex flex-col gap-2 cursor-pointer", // Removed Link wrapper to handle interactions better
+                "group relative flex flex-col gap-2 cursor-pointer",
                 variant === 'horizontal' && "flex-row gap-4",
                 className
             )}
@@ -61,7 +65,7 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
             <div className={cn(
                 "relative bg-muted overflow-hidden rounded-xl aspect-video w-full transition-all duration-300",
                 isHovered && "ring-2 ring-primary/50 shadow-lg shadow-primary/10",
-                variant === 'horizontal' && "w-40 sm:w-60 "
+                variant === 'horizontal' && "w-40 sm:w-60 shrink-0"
             )}>
                 {/* Main Image */}
                 <Image
@@ -73,6 +77,7 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
                         isHovered && video.video_url ? "opacity-0" : "opacity-100"
                     )}
                     unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
 
                 {/* Video Preview */}
@@ -111,9 +116,9 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
             </div>
 
             {/* Info Section */}
-            <div className="flex gap-3 px-1">
+            <div className="flex gap-3 px-1 flex-1 min-w-0">
                 {variant !== 'horizontal' && (
-                    <Link href={`/author/${video.author}`} onClick={(e) => e.stopPropagation()} className="relative z-20">
+                    <Link href={`/author/${video.author}`} onClick={(e) => e.stopPropagation()} className="relative z-20 shrink-0">
                         <Avatar className="w-9 h-9 border border-border/10 mt-0.5  hover:border-primary transition-colors cursor-pointer">
                             <AvatarImage src={video.author_avatar} alt={video.author} />
                             <AvatarFallback>{video.author?.[0] || 'U'}</AvatarFallback>
@@ -137,8 +142,6 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
                             >
                                 {video.author}
                             </Link>
-
-                            {/* Verification tick could go here */}
                         </div>
 
                         <div className="flex items-center gap-1">
@@ -149,21 +152,20 @@ export default function VideoCard({ video, className, variant = 'vertical' }: Vi
                     </div>
                 </div>
 
-                {/* Menu / Options - only show on hover for cleanup */}
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-2 right-0 md:static md:opacity-0 md:group-hover:opacity-100">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
                     <button
                         className="p-1 hover:bg-muted rounded-full text-foreground"
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            // Implementation for menu options
                         }}
                     >
                         <MoreVertical className="w-4 h-4" />
                     </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
-}
+};
 
+export default VideoCard;

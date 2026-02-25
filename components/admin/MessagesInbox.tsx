@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
@@ -16,26 +17,31 @@ interface Message {
 export default function MessagesInbox() {
     const [messages, setMessages] = useState<Message[]>([]);
 
-    const fetchMessages = useCallback(async () => {
+    const fetchMessages = useCallback(async (signal?: AbortSignal) => {
         try {
-            const res = await axios.get('/api/contact');
+            const res = await axios.get('/api/contact', { signal });
             setMessages(res.data);
-        } catch (error) {
+        } catch (error: unknown) {
+            if (error instanceof Error && error.name === 'CanceledError') return;
             console.error(error);
             toast.error("Failed to fetch messages");
         }
     }, []);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        fetchMessages();
+        const controller = new AbortController();
+        const loadData = async () => {
+            await fetchMessages(controller.signal);
+        };
+        loadData();
+        return () => controller.abort();
     }, [fetchMessages]);
 
     return (
         <div className="bg-card rounded-lg border border-border overflow-hidden">
             <div className="p-6 border-b border-border flex justify-between items-center">
                 <h2 className="text-xl font-bold">Support Inbox</h2>
-                <Button variant="outline" size="sm" onClick={fetchMessages}>Refresh</Button>
+                <Button variant="outline" size="sm" onClick={() => fetchMessages()}>Refresh</Button>
             </div>
             <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left">

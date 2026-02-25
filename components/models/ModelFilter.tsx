@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '@/lib/utils'; // Assuming standard shadcn utils structure, if not defined I'll handle purely with template literals in mind, but classnames/clsx is standard.
 
 interface ModelFilterProps {
     currentFilter: string;
@@ -15,7 +14,7 @@ export function ModelFilter({ currentFilter, onFilterChange }: ModelFilterProps)
     ];
 
     return (
-        <div className="flex items-center p-1 bg-secondary/30 backdrop-blur-sm rounded-xl border border-white/5">
+        <div className="flex items-center p-1 bg-secondary/30 backdrop-blur-sm rounded-xl border border-white/5 overflow-x-auto no-scrollbar flex-nowrap">
             {filters.map((filter) => (
                 <button
                     key={filter.id}

@@ -30,7 +30,7 @@ export default function ExemptionPage() {
             </div>
 
             <p>
-                For content produced by third parties, please refer to the individual 2257 exemption statement on the producer's website, or contact us for assistance in locating the custodian of records for a specific video.
+                For content produced by third parties, please refer to the individual 2257 exemption statement on the producer&apos;s website, or contact us for assistance in locating the custodian of records for a specific video.
             </p>
         </InfoPageLayout>
     );

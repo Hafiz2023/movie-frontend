@@ -1,33 +1,10 @@
-import axios from 'axios';
+/**
+ * Legacy API helper - now delegates to the central axios instance.
+ * Use `@/services` for new code instead of importing from here.
+ */
 
-// Create an Axios instance with default configuration
-const api = axios.create({
-    baseURL: 'http://localhost:8000/api', // Adjust if your backend port differs
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
-
-export interface Video {
-    id: number;
-    title: string;
-    description?: string;
-    video_url: string;
-    thumbnail_url: string;
-    duration: string;
-    views: number;
-    likes: number;
-    category_id: number;
-    created_at: string;
-    // Add other fields as needed matching schema
-}
-
-export interface Category {
-    id: number;
-    name: string;
-    slug: string;
-    thumbnail_url?: string;
-}
+import api from './axios';
+import { Video, Category } from '@/types';
 
 export const fetchVideos = async (category_id?: number) => {
     const params = category_id ? { category_id } : {};
@@ -41,10 +18,8 @@ export const fetchVideo = async (id: number) => {
 };
 
 export const fetchCategories = async () => {
-    // We need to implement this route in backend strictly speaking, 
-    // but for now let's assume it exists or we mock it if backend isn't fully ready with it
     const response = await api.get<Category[]>('/categories');
     return response.data;
-}
+};
 
 export default api;

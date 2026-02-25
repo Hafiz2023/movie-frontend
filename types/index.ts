@@ -170,3 +170,23 @@ export interface Photo {
     title: string;
     tags: string[];
 }
+
+/**
+ * Represents the shape of mock video data used for UI demos.
+ * Differs from the database `Video` type (e.g., views/likes are strings, has author fields).
+ */
+export interface MockVideo {
+    id: number;
+    title: string;
+    thumbnail_url: string;
+    duration: string;
+    author: string;
+    author_avatar: string;
+    views: string;
+    date: string;
+    category: string;
+    likes: string;
+    video_url: string;
+    description: string;
+    tags: string[];
+}

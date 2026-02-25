@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MOCK_VIDEOS, MOCK_SHORTS } from '@/utils/mockData';
-import { ArrowLeft, Filter, Play, Clock, Heart, Eye } from 'lucide-react';
+import { ArrowLeft, Play, Clock, Eye } from 'lucide-react';
 import { useParams } from 'next/navigation';
 
 export default function CategoryDetailPage() {

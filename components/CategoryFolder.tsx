@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Folder, Film, Play } from 'lucide-react';
+import { Folder, Film } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface CategoryFolderProps {

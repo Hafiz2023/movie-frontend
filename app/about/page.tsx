@@ -9,7 +9,7 @@ export default function AboutPage() {
             <h3>Who We Are</h3>
             <p>
                 MovieApp is a premier destination for high-quality adult entertainment. We are dedicated to providing a distinct and premium viewing experience for our global audience.
-                Our platform hosts the world's largest collection of premium videos, accessible completely free of charge.
+                Our platform hosts the world&apos;s largest collection of premium videos, accessible completely free of charge.
             </p>
 
             <h3>Our Mission</h3>

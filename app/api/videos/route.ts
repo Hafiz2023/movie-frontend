@@ -1,8 +1,8 @@
 
 import { NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth';
 
-export async function GET(req: Request) {
+
+export async function GET(_req: Request) {
     // Mock data for build
     return NextResponse.json([
         {
@@ -16,6 +16,6 @@ export async function GET(req: Request) {
     ]);
 }
 
-export async function POST(req: Request) {
+export async function POST(_req: Request) {
     return NextResponse.json({ id: 100, title: 'New Mock Video' }, { status: 201 });
 }

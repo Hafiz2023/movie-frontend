@@ -2,7 +2,7 @@
 
 import React from 'react';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
-import { Shield, Lock, CreditCard, CheckCircle } from 'lucide-react';
+import { Lock, CreditCard } from 'lucide-react';
 
 export default function BillingPage() {
     return (
@@ -30,7 +30,7 @@ export default function BillingPage() {
                         Secure Transactions
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                        All transactions are processed using 256-bit SSL encryption. Your billing statement will appear discreetly as "M-Billing" or "Premium Service" to protect your privacy.
+                        All transactions are processed using 256-bit SSL encryption. Your billing statement will appear discreetly as &quot;M-Billing&quot; or &quot;Premium Service&quot; to protect your privacy.
                     </p>
                 </div>
             </div>
@@ -52,7 +52,7 @@ export default function BillingPage() {
                 <div>
                     <h4 className="font-bold text-foreground">How do I update my card?</h4>
                     <p className="text-muted-foreground text-sm mt-1">
-                        Go to your Account Settings, select the "Billing" tab, and click "Update Payment Method".
+                        Go to your Account Settings, select the &quot;Billing&quot; tab, and click &quot;Update Payment Method&quot;.
                     </p>
                 </div>
             </div>

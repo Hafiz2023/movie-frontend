@@ -4,11 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 import { notFound, useParams } from 'next/navigation';
 import { MOCK_SHORTS } from '@/utils/mockData';
-import { ArrowLeft, User, Heart, Share2, MoreHorizontal, MessageSquare, Music2 } from 'lucide-react';
+import { ArrowLeft, Heart, Share2, MoreHorizontal, MessageSquare, Music2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
-import { ShortVideo } from '@/types';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import Image from 'next/image';
 
 
 export default function ShortWatchPage() {
@@ -25,7 +24,7 @@ export default function ShortWatchPage() {
             {/* Background Blur Effect */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-black/60 z-10" />
-                <img src={short.thumbnail_url} className="w-full h-full object-cover blur-3xl opacity-50" />
+                <Image src={short.thumbnail_url} alt={short.title} fill className="object-cover blur-3xl opacity-50" unoptimized />
             </div>
 
             <div className="flex flex-col md:flex-row relative z-20 w-full h-full md:max-w-6xl md:h-[90vh] md:rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black">
@@ -124,7 +123,7 @@ export default function ShortWatchPage() {
                                         </div>
                                     </div>
                                     <p className="text-sm text-zinc-400 leading-relaxed group-hover:text-zinc-200 transition-colors">
-                                        This is absolutely amazing! The cinematography is top-notch. Can't wait for part 2! 🔥
+                                        This is absolutely amazing! The cinematography is top-notch. Can&apos;t wait for part 2! 🔥
                                     </p>
                                     <div className="flex items-center gap-4 mt-1">
                                         <button className="text-xs font-semibold text-zinc-500 hover:text-zinc-300 flex items-center gap-1">

@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import { LogOut, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function DashboardHeader() {
     const { user, logout } = useAuthStore();

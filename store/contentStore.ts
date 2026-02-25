@@ -1,4 +1,3 @@
-'use client';
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -46,7 +45,7 @@ const useContentStore = create<ContentStore>()(
 
                 // Adapt MOCK_VIDEOS to Video type (partial adaptation)
                 // The mock data structure (MOCK_VIDEOS) and the store's expected Video type might differ slightly
-                const adaptedMovies: any[] = MOCK_VIDEOS.map(m => ({
+                const adaptedMovies: Video[] = MOCK_VIDEOS.map(m => ({
                     id: m.id,
                     title: m.title,
                     description: m.description,
@@ -61,7 +60,7 @@ const useContentStore = create<ContentStore>()(
                     tags: m.tags
                 }));
 
-                const adaptedShorts: any[] = MOCK_SHORTS.map(s => ({
+                const adaptedShorts: ShortVideo[] = MOCK_SHORTS.map(s => ({
                     ...s,
                 }));
 

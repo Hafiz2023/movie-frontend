@@ -6,7 +6,7 @@ import InfoPageLayout from '@/components/layout/InfoPageLayout';
 export default function TermsPage() {
     return (
         <InfoPageLayout title="Terms & Conditions">
-            <p className="lead">Please read these Terms and Conditions ("Terms") carefully before using the MovieApp website.</p>
+            <p className="lead">Please read these Terms and Conditions (&quot;Terms&quot;) carefully before using the MovieApp website.</p>
 
             <h3>1. Age Restriction</h3>
             <p>
@@ -26,7 +26,7 @@ export default function TermsPage() {
 
             <h3>4. Disclaimer of Warranties</h3>
             <p>
-                The website is provided on an "AS IS" and "AS AVAILABLE" basis. We make no representations or warranties of any kind, express or implied, regarding the operation of the site or the information, content, or materials included.
+                The website is provided on an &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; basis. We make no representations or warranties of any kind, express or implied, regarding the operation of the site or the information, content, or materials included.
             </p>
 
             <h3>5. Limitation of Liability</h3>

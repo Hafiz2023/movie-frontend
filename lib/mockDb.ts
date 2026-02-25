@@ -2,9 +2,44 @@
 import fs from 'fs';
 import path from 'path';
 
+// ─── Types ───────────────────────────────────────────────
+interface MockUser {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    avatar: string;
+    createdAt: string;
+}
+
+interface MockMessage {
+    id?: number;
+    name: string;
+    email: string;
+    phone?: string;
+    subject: string;
+    message: string;
+    createdAt?: string;
+}
+
+interface MockOrder {
+    id?: number;
+    userId?: number;
+    plan: string;
+    price?: number | string;
+    amount?: number;
+    cycle?: string;
+    paymentMethod: string;
+    status: string;
+    user?: Record<string, string>;
+    createdAt?: string;
+}
+
+// ─── Users ───────────────────────────────────────────────
 const dbPath = path.join(process.cwd(), 'data', 'users.json');
 
-// Ensure data directory calls
+// Ensure data directory exists
 if (!fs.existsSync(path.dirname(dbPath))) {
     fs.mkdirSync(path.dirname(dbPath), { recursive: true });
 }
@@ -12,44 +47,41 @@ if (!fs.existsSync(dbPath)) {
     fs.writeFileSync(dbPath, '[]');
 }
 
-export const getUsers = () => {
+export const getUsers = (): MockUser[] => {
     try {
         const data = fs.readFileSync(dbPath, 'utf8');
-        return JSON.parse(data);
-    } catch (error) {
+        return JSON.parse(data) as MockUser[];
+    } catch {
         return [];
     }
 };
 
-export const saveUser = (user: any) => {
+export const saveUser = (user: MockUser): MockUser => {
     const users = getUsers();
     users.push(user);
     fs.writeFileSync(dbPath, JSON.stringify(users, null, 2));
     return user;
 };
 
-export const findUserByEmail = (email: string) => {
+export const findUserByEmail = (email: string): MockUser | undefined => {
     const users = getUsers();
-    return users.find((u: any) => u.email === email);
+    return users.find((u) => u.email === email);
 };
 
+// ─── Messages ────────────────────────────────────────────
 const messagesPath = path.join(process.cwd(), 'data', 'messages.json');
 
-if (!fs.existsSync(messagesPath)) {
-    // fs.writeFileSync(messagesPath, '[]'); // Don't write immediately on import if not needed, but good for setup
-}
-
-export const getMessages = () => {
+export const getMessages = (): (MockMessage & { id: number; createdAt: string })[] => {
     try {
         if (!fs.existsSync(messagesPath)) return [];
         const data = fs.readFileSync(messagesPath, 'utf8');
         return JSON.parse(data);
-    } catch (error) {
+    } catch {
         return [];
     }
 };
 
-export const saveMessage = (message: any) => {
+export const saveMessage = (message: MockMessage) => {
     const messages = getMessages();
     const newMessage = { ...message, id: Date.now(), createdAt: new Date().toISOString() };
     messages.push(newMessage);
@@ -62,19 +94,20 @@ export const saveMessage = (message: any) => {
     return newMessage;
 };
 
+// ─── Orders ──────────────────────────────────────────────
 const ordersPath = path.join(process.cwd(), 'data', 'orders.json');
 
-export const getOrders = () => {
+export const getOrders = (): (MockOrder & { id: number; createdAt: string })[] => {
     try {
         if (!fs.existsSync(ordersPath)) return [];
         const data = fs.readFileSync(ordersPath, 'utf8');
         return JSON.parse(data);
-    } catch (error) {
+    } catch {
         return [];
     }
 };
 
-export const saveOrder = (order: any) => {
+export const saveOrder = (order: MockOrder) => {
     const orders = getOrders();
     const newOrder = { ...order, id: Date.now(), createdAt: new Date().toISOString() };
     orders.push(newOrder);

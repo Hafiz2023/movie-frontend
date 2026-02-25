@@ -20,7 +20,7 @@ export default function DashboardPage() {
             <DashboardHeader />
 
             <Tabs defaultValue="overview" className="space-y-8">
-                <TabsList className="bg-card w-full justify-start h-auto p-2 gap-2 border border-border overflow-x-auto">
+                <TabsList className="bg-card w-full justify-start h-auto p-1.5 sm:p-2 gap-1 sm:gap-2 border border-border overflow-x-auto no-scrollbar flex-nowrap">
                     <TabsTrigger value="overview" className="gap-2 px-4 py-2">
                         <User className="w-4 h-4" /> Overview
                     </TabsTrigger>

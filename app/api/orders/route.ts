@@ -8,7 +8,7 @@ export async function GET() {
     try {
         const orders = getOrders();
         return NextResponse.json(orders);
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: 'Failed to fetch orders' }, { status: 500 });
     }
 }
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         });
 
         return NextResponse.json(newOrder, { status: 201 });
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: 'Failed to save order' }, { status: 500 });
     }
 }

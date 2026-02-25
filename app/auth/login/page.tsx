@@ -59,9 +59,9 @@ export default function LoginPage() {
             } else {
                 router.push('/dashboard');
             }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } catch (error: any) {
-            toast.error(error.message || 'Login failed');
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : 'Login failed';
+            toast.error(message);
         } finally {
             setLoading(false);
         }
@@ -86,8 +86,7 @@ export default function LoginPage() {
             login(googleUser, 'mock-google-token');
             toast.success('Successfully returned with Google!');
             router.push('/');
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (error) {
+        } catch {
             toast.error('Google sign in failed. Please try again.');
         } finally {
             setLoading(false);
@@ -99,7 +98,7 @@ export default function LoginPage() {
 
             {/* Left Side - Hero / Visuals (Hidden on mobile) */}
             <div className="hidden lg:flex w-1/2 relative bg-black items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-10  from-primary/40 to-black/80 mix-blend-multiply" />
+                <div className="absolute inset-0 z-10 bg-gradient-to-b from-primary/40 to-black/80 mix-blend-multiply" />
                 <Image
                     src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop"
                     alt="Movie Theater"
@@ -262,7 +261,7 @@ export default function LoginPage() {
                     </form>
 
                     <p className="text-center text-sm text-muted-foreground pt-4">
-                        Dont have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <Link href="/auth/register" className="font-semibold text-primary hover:text-primary/80 hover:underline transition-all">
                             Sign up for free
                         </Link>

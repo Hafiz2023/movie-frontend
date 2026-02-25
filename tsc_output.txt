@@ -1,0 +1,3 @@
+app/shorts/page.tsx(44,21): error TS2322: Type 'import("C:/Users/HAFIZ ADIL/OneDrive/Desktop/Movie/movie-frontend/types/index").ShortVideo[]' is not assignable to type 'ShortVideo[]'.
+  Property 'author' is missing in type 'import("C:/Users/HAFIZ ADIL/OneDrive/Desktop/Movie/movie-frontend/types/index").ShortVideo' but required in type 'ShortVideo'.
+components/shorts/ShortsGrid.tsx(53,45): error TS2739: Type 'ShortVideo' is missing the following properties from type 'ShortVideo': video_url, likes

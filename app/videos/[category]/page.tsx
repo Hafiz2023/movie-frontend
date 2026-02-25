@@ -2,8 +2,8 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import { MOCK_VIDEOS } from '@/utils/mockData';
-import VideoCard from '@/components/VideoCard';
-import { ArrowLeft, Flame, Sparkles, AlertCircle } from 'lucide-react';
+import VideoCard from '@/components/video/VideoCard';
+import { ArrowLeft, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -85,9 +85,9 @@ export default function CategoryPage() {
                         <div className="bg-secondary/50 p-6 rounded-full">
                             <AlertCircle className="w-12 h-12 text-muted-foreground" />
                         </div>
-                        <h2 className="text-xl font-semibold">No videos found for "{categoryName}"</h2>
+                        <h2 className="text-xl font-semibold">No videos found for &quot;{categoryName}&quot;</h2>
                         <p className="text-muted-foreground max-w-md">
-                            We couldn't find any videos in this category. Try exploring our other categories.
+                            We couldn&apos;t find any videos in this category. Try exploring our other categories.
                         </p>
                         <Link href="/videos">
                             <Button className="mt-4">Back to All Videos</Button>

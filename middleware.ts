@@ -1,23 +1,50 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+/**
+ * Next.js Middleware
+ * Runs on every request that matches the config.
+ * 
+ * Note: Actual auth protection is handled client-side via ProtectedRoute component
+ * since auth tokens are stored in localStorage (not accessible server-side).
+ * This middleware focuses on security headers and request augmentation.
+ */
 export function middleware(request: NextRequest) {
-    // Logic to check if user is authenticated via cookie is not possible if we only use localStorage and JWT in client.
-    // Next.js middleware runs on edge/server, so it cannot access localStorage.
-    // If we want server-side protection, we need to implement cookie-based auth or verify logic on client.
-    // Assuming current implementation uses client-side auth check via Zustand or ProtectedRoute.
-    // However, middleware can check for protected routes and redirect if needed based on cookies.
-    // Since we implemented JWT return in body and stored in localStorage, middleware cannot check it easily.
-    // We should rely on client-side protection for now or migrate to cookie-based auth.
+    const response = NextResponse.next();
 
-    // For now, let's keep it simple and just allow requests, maybe logging.
-    // If we want to implement protection, the client components are responsible for redirecting if no user.
-    // user mentioned dashboard not redirecting.
-    // Let's implement basic protection for /dashboard on client side, which seems already done in `ProtectedRoute` component or similar?
+    // ─── Security Headers ────────────────────────────────
+    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    response.headers.set('X-DNS-Prefetch-Control', 'on');
+    response.headers.set(
+        'Permissions-Policy',
+        'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+    );
 
-    return NextResponse.next();
+    // ─── CORS for API routes ─────────────────────────────
+    if (request.nextUrl.pathname.startsWith('/api/')) {
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        // Handle preflight
+        if (request.method === 'OPTIONS') {
+            return new NextResponse(null, { status: 200, headers: response.headers });
+        }
+    }
+
+    return response;
 }
 
 export const config = {
-    matcher: ['/dashboard/:path*', '/admin/:path*'],
+    matcher: [
+        /*
+         * Match all request paths except for the ones starting with:
+         * - _next/static (static files)
+         * - _next/image (image optimization files)
+         * - favicon.ico (favicon file)
+         */
+        '/((?!_next/static|_next/image|favicon.ico).*)',
+    ],
 };

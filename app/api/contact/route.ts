@@ -8,7 +8,7 @@ export async function GET() {
     try {
         const messages = getMessages();
         return NextResponse.json(messages);
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: 'Failed to fetch messages' }, { status: 500 });
     }
 }
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         const newMessage = saveMessage({ name, email, phone, subject, message });
 
         return NextResponse.json(newMessage, { status: 201 });
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: 'Failed to save message' }, { status: 500 });
     }
 }

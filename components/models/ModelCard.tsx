@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle2, Star } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { Model } from '@/types';
 
 interface ModelCardProps {
@@ -11,13 +10,13 @@ interface ModelCardProps {
 
 export function ModelCard({ model }: ModelCardProps) {
     return (
-        <Link href={`/models/${model.id}`} className="group relative flex flex-col items-center p-4 rounded-xl transition-all duration-300 hover:bg-white/5 mx-auto w-full max-w-[200px]">
+        <Link href={`/models/${model.id}`} className="group relative flex flex-col items-center p-3 sm:p-4 rounded-xl transition-all duration-300 hover:bg-white/5 mx-auto w-full max-w-[180px] sm:max-w-[200px]">
             {/* Avatar Circle Container */}
             <div className="relative mb-4">
                 {/* Animated Gradient Border */}
                 <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-transparent via-primary to-purple-500 opacity-0 group-hover:opacity-100 blur-md transition-all duration-500" />
 
-                <div className="relative w-32 h-32 md:w-36 md:h-36 rounded-full p-[3px] bg-gradient-to-tr from-secondary to-secondary group-hover:from-primary group-hover:to-orange-500 transition-all duration-300">
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full p-[3px] bg-gradient-to-tr from-secondary to-secondary group-hover:from-primary group-hover:to-orange-500 transition-all duration-300">
                     <div className="w-full h-full rounded-full overflow-hidden border-4 border-background relative bg-muted">
                         <Image
                             src={model.avatar}
@@ -29,7 +28,7 @@ export function ModelCard({ model }: ModelCardProps) {
                 </div>
 
                 {/* Rank Badge - Floating with Glow */}
-                <div className="absolute -top-1 -right-1 bg-gradient-to-br from-primary to-orange-500 text-white font-bold w-8 h-8 flex items-center justify-center rounded-full text-xs shadow-[0_0_15px_rgba(var(--primary),0.5)] border-2 border-background z-10 group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute -top-1 -right-1 bg-gradient-to-br from-primary to-orange-500 text-white font-bold w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full text-[10px] sm:text-xs shadow-[0_0_15px_rgba(var(--primary),0.5)] border-2 border-background z-10 group-hover:scale-110 transition-transform duration-300">
                     <span className="drop-shadow-sm">#{model.rank}</span>
                 </div>
 
@@ -64,8 +63,8 @@ export function ModelCard({ model }: ModelCardProps) {
             </div>
 
             {/* Subscribe Button (Slide up effect) */}
-            <div className="absolute inset-x-0 bottom-24 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex justify-center pointer-events-none">
-                <button className="bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg pointer-events-auto hover:bg-primary transition-colors">
+            <div className="absolute inset-x-0 bottom-20 sm:bottom-24 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex justify-center pointer-events-none">
+                <button className="bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg pointer-events-auto hover:bg-primary active:scale-95 transition-all">
                     Subscribe
                 </button>
             </div>

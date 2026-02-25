@@ -20,7 +20,7 @@ export async function POST(request: Request) {
             expiresAt: new Date(Date.now() + (billingCycle === 'yearly' ? 31536000000 : 2592000000)) // +1 year or +1 month
         });
 
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: 'Payment processing failed' }, { status: 500 });
     }
 }

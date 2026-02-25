@@ -29,7 +29,7 @@ export default function PhotosPage() {
     return (
         <div className="min-h-screen bg-background text-foreground pb-20">
             {/* Header Section */}
-            <div className="bg-background/80 backdrop-blur-md border-b border-border sticky top-14 md:top-0 z-30 py-6 px-4">
+            <div className="bg-background/80 backdrop-blur-md border-b border-border sticky top-16 z-30 py-4 sm:py-6 px-4">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight mb-1 flex items-center gap-2">

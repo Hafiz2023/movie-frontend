@@ -13,6 +13,6 @@ export async function GET() {
     ]);
 }
 
-export async function POST(req: Request) {
+export async function POST(_req: Request) {
     return NextResponse.json({ id: 99, name: 'New Category' }, { status: 201 });
 }

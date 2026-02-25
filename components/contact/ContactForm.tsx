@@ -26,7 +26,7 @@ export const ContactForm = () => {
             await new Promise(resolve => setTimeout(resolve, 1500));
             toast.success('Message sent successfully!');
             setFormData({ name: '', email: '', subject: '', message: '' });
-        } catch (error) {
+        } catch {
             toast.error('Failed to send message.');
         } finally {
             setLoading(false);
