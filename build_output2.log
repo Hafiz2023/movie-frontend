@@ -1,0 +1,126 @@
+﻿
+> movie-frontend@0.1.0 build
+> next build
+
+node.exe : ΓÜá Warning: Next.js 
+inferred your workspace root, 
+but it may not be correct.
+At C:\Program 
+Files\nodejs\npm.ps1:29 char:3
++   & $NODE_EXE $NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : No 
+   tSpecified: (ΓÜá Warning: Ne  
+  ...not be correct.:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId : Na 
+   tiveCommandError
+ 
+ We detected multiple lockfiles 
+and selected the directory of 
+C:\Users\HAFIZ 
+ADIL\package-lock.json as the 
+root directory.
+ To silence this warning, set 
+`turbopack.root` in your Next.js 
+config, or consider removing one 
+of the lockfiles if it's not 
+needed.
+   See https://nextjs.org/docs/ap
+p/api-reference/config/next-confi
+g-js/turbopack#root-directory 
+for more information.
+ Detected additional lockfiles: 
+   * C:\Users\HAFIZ ADIL\OneDrive
+\Desktop\Movie\movie-frontend\pac
+kage-lock.json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ΓÜá The "middleware" file 
+convention is deprecated. Please 
+use "proxy" instead. Learn more: 
+https://nextjs.org/docs/messages/
+middleware-to-proxy
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 28.5s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+Error [PrismaClientInitialization
+Error]: `PrismaClient` needs to 
+be constructed with a non-empty, 
+valid `PrismaClientOptions`:
+
+```
+new PrismaClient({
+  ...
+})
+```
+
+or
+
+```
+constructor() {
+  super({ ... });
+}
+```
+          
+    at module evaluation 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[root-of-the-server]
+__d088f564._.js:1:1167)
+    at instantiateModule 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[turbopack]_runtime.
+js:740:9)
+    at 
+getOrInstantiateModuleFromParent 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[turbopack]_runtime.
+js:763:12)
+    at Context.esmImport [as i] 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[turbopack]_runtime.
+js:228:20)
+    at module evaluation 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[root-of-the-server]
+__d088f564._.js:1:1488)
+    at instantiateModule 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[turbopack]_runtime.
+js:740:9)
+    at instantiateRuntimeModule 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[turbopack]_runtime.
+js:768:12)
+    at 
+getOrInstantiateRuntimeModule 
+(C:\Users\HAFIZ ADIL\OneDrive\Des
+ktop\Movie\movie-frontend\.next\s
+erver\chunks\[turbopack]_runtime.
+js:781:12)
+    at Object.m (C:\Users\HAFIZ A
+DIL\OneDrive\Desktop\Movie\movie-
+frontend\.next\server\chunks\[tur
+bopack]_runtime.js:790:18) {
+  clientVersion: '7.4.0',
+  errorCode: undefined,
+  retryable: undefined
+}
+
+> Build error occurred
+Error: Failed to collect page 
+data for /api/admin/videos/[id]
+    at ignore-listed frames {
+  type: 'Error'
+}
+
