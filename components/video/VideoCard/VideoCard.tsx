@@ -38,7 +38,7 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
         if (isHovered && videoRef.current && video.video_url) {
             timeout = setTimeout(() => {
                 videoRef.current?.play().catch(() => { });
-            }, 400); // Slightly faster than before
+            }, 400);
         } else if (videoRef.current) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
@@ -52,8 +52,8 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className={cn(
-                "group relative flex flex-col gap-2 cursor-pointer",
-                variant === 'horizontal' && "flex-row gap-4",
+                "group relative flex flex-col gap-1.5 sm:gap-2 cursor-pointer",
+                variant === 'horizontal' && "flex-row gap-2 sm:gap-3 md:gap-4",
                 className
             )}
             onMouseEnter={() => setIsHovered(true)}
@@ -63,9 +63,9 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
 
             {/* Thumbnail / Video Container */}
             <div className={cn(
-                "relative bg-muted overflow-hidden rounded-xl aspect-video w-full transition-all duration-300",
+                "relative bg-muted overflow-hidden rounded-lg sm:rounded-xl aspect-video w-full transition-all duration-300",
                 isHovered && "ring-2 ring-primary/50 shadow-lg shadow-primary/10",
-                variant === 'horizontal' && "w-40 sm:w-60 shrink-0"
+                variant === 'horizontal' && "w-28 sm:w-40 md:w-60 shrink-0"
             )}>
                 {/* Main Image */}
                 <Image
@@ -77,7 +77,7 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
                         isHovered && video.video_url ? "opacity-0" : "opacity-100"
                     )}
                     unoptimized
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                 />
 
                 {/* Video Preview */}
@@ -97,44 +97,44 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
 
                 {/* Overlays */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="bg-background/50 backdrop-blur-sm p-3 rounded-full border border-border/20 transform scale-90 group-hover:scale-100 transition-transform">
-                        <Play className="w-6 h-6 text-foreground fill-foreground" />
+                    <div className="bg-background/50 backdrop-blur-sm p-2 sm:p-3 rounded-full border border-border/20 transform scale-90 group-hover:scale-100 transition-transform">
+                        <Play className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-foreground fill-foreground" />
                     </div>
                 </div>
 
-                <div className="absolute top-2 right-2 flex flex-col gap-1 items-end pointer-events-none">
+                <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 flex flex-col gap-1 items-end pointer-events-none">
                     {isHighDef && (
-                        <span className="bg-black/60 backdrop-blur-md text-white text-[10px] px-1.5 py-0.5 rounded-md font-bold border border-white/10 uppercase tracking-wider">
+                        <span className="bg-black/60 backdrop-blur-md text-white text-[8px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded-md font-bold border border-white/10 uppercase tracking-wider">
                             HD 4K
                         </span>
                     )}
                 </div>
 
-                <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-xs text-white font-medium tracking-tight shadow-sm pointer-events-none">
+                <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-black/80 backdrop-blur-sm px-1 sm:px-1.5 py-0.5 rounded text-[10px] sm:text-xs text-white font-medium tracking-tight shadow-sm pointer-events-none">
                     {video.duration}
                 </div>
             </div>
 
             {/* Info Section */}
-            <div className="flex gap-3 px-1 flex-1 min-w-0">
+            <div className="flex gap-2 sm:gap-3 px-0.5 sm:px-1 flex-1 min-w-0">
                 {variant !== 'horizontal' && (
                     <Link href={`/author/${video.author}`} onClick={(e) => e.stopPropagation()} className="relative z-20 shrink-0">
-                        <Avatar className="w-9 h-9 border border-border/10 mt-0.5  hover:border-primary transition-colors cursor-pointer">
+                        <Avatar className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 border border-border/10 mt-0.5 hover:border-primary transition-colors cursor-pointer">
                             <AvatarImage src={video.author_avatar} alt={video.author} />
-                            <AvatarFallback>{video.author?.[0] || 'U'}</AvatarFallback>
+                            <AvatarFallback className="text-[10px] sm:text-xs">{video.author?.[0] || 'U'}</AvatarFallback>
                         </Avatar>
                     </Link>
                 )}
 
-                <div className="flex flex-col gap-1 min-w-0 flex-1">
+                <div className="flex flex-col gap-0.5 sm:gap-1 min-w-0 flex-1">
                     <h3 className={cn(
-                        "font-semibold leading-tight text-foreground/90 group-hover:text-primary transition-colors text-base line-clamp-2",
+                        "font-semibold leading-tight text-foreground/90 group-hover:text-primary transition-colors text-xs sm:text-sm md:text-base line-clamp-2",
                     )}>
                         {video.title}
                     </h3>
 
-                    <div className="flex flex-col gap-0.5 text-xs text-muted-foreground/80">
-                        <div className="flex items-center gap-2">
+                    <div className="flex flex-col gap-0 sm:gap-0.5 text-[10px] sm:text-xs text-muted-foreground/80">
+                        <div className="flex items-center gap-1 sm:gap-2">
                             <Link
                                 href={`/author/${video.author}`}
                                 className="hover:text-foreground transition-colors truncate relative z-20"
@@ -152,7 +152,7 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
                     </div>
                 </div>
 
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0 hidden sm:block">
                     <button
                         className="p-1 hover:bg-muted rounded-full text-foreground"
                         onClick={(e) => {
@@ -160,7 +160,7 @@ const VideoCard = ({ video, className, variant = 'vertical' }: VideoCardProps) =
                             e.stopPropagation();
                         }}
                     >
-                        <MoreVertical className="w-4 h-4" />
+                        <MoreVertical className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
                 </div>
             </div>

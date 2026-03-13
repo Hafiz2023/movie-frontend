@@ -1,0 +1,37 @@
+﻿
+> movie-frontend@0.1.0 lint
+> eslint
+
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\admin\page.tsx
+  232:9  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\affiliates\page.tsx
+  18:42  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\api\admin\videos\[id]\route.ts
+  29:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\api\admin\videos\route.ts
+  6:27  warning  'req' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\channels\page.tsx
+  4:18  warning  'Flame' is defined but never used. Allowed unused vars must match /^_/u       @typescript-eslint/no-unused-vars
+  4:25  warning  'Star' is defined but never used. Allowed unused vars must match /^_/u        @typescript-eslint/no-unused-vars
+  4:38  warning  'PlayCircle' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\page.tsx
+  8:8  warning  'Link' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\app\top-rated\page.tsx
+  4:16  warning  'Flame' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\components\dashboard\AnalyticsTab.tsx
+  3:32  warning  'PieChart' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\HAFIZ ADIL\OneDrive\Desktop\Movie\movie-frontend\components\layout\Footer\FooterBottom.tsx
+  5:10  warning  'MessageCircle' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+Γ£û 11 problems (2 errors, 9 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+

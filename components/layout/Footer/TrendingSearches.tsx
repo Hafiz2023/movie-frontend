@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import { TagCloud } from '@/components/ui/TagCloud';
 
 const TrendingSearches = () => {
     const tags = [
@@ -13,18 +13,11 @@ const TrendingSearches = () => {
 
     return (
         <div className="border-t border-border pt-8 mb-8">
-            <h4 className="text-muted-foreground font-bold text-[10px] uppercase tracking-widest mb-4 opacity-70">Trending Searches</h4>
-            <div className="flex flex-wrap gap-x-4 gap-y-2">
-                {tags.map((tag, i) => (
-                    <Link
-                        key={i}
-                        href={`/search?q=${tag}`}
-                        className="text-xs text-muted-foreground hover:text-primary transition-colors hover:underline decoration-primary/50 underline-offset-4"
-                    >
-                        {tag}
-                    </Link>
-                ))}
-            </div>
+            <h4 className="flex items-center gap-2 text-muted-foreground font-bold text-[10px] uppercase tracking-widest mb-4 opacity-70">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                Trending Searches
+            </h4>
+            <TagCloud tags={tags} />
         </div>
     );
 };

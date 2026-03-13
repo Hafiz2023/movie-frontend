@@ -43,12 +43,12 @@ export default function VideoFormDialog({
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-card/95 backdrop-blur-xl border-border/50 max-h-[90vh] sm:max-h-[85vh] flex flex-col">
                 <div className="relative px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0  from-primary/5 to-transparent pointer-events-none" />
                     <DialogHeader className="relative">
                         <div className="flex items-center gap-3 mb-1">
                             <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center shadow-sm ${isEdit
-                                ? 'bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/20'
-                                : 'bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20'
+                                ? ' from-blue-500/20 to-blue-600/10 border border-blue-500/20'
+                                : ' from-primary/20 to-primary/10 border border-primary/20'
                                 }`}>
                                 {isEdit ? <Type className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500" /> : <Link2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
                             </div>
@@ -68,7 +68,7 @@ export default function VideoFormDialog({
                         </div>
                         <div className="h-1 bg-muted/50 rounded-full overflow-hidden">
                             <div
-                                className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full transition-all duration-500 ease-out"
+                                className="h-full  from-primary to-primary/60 rounded-full transition-all duration-500 ease-out"
                                 style={{ width: `${progressPercent}%` }}
                             />
                         </div>

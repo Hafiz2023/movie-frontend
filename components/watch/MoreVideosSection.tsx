@@ -6,12 +6,12 @@ import { MOCK_VIDEOS } from '@/utils/mockData';
 
 export default function MoreVideosSection() {
     return (
-        <div className="border-t border-white/10 pt-10 mt-10">
-            <h2 className="text-2xl font-black mb-8 flex items-center gap-3">
-                <span className="w-1 h-8 bg-primary rounded-full" />
+        <div className="border-t border-white/10 pt-6 sm:pt-8 md:pt-10 mt-6 sm:mt-8 md:mt-10">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-black mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
+                <span className="w-1 h-6 sm:h-8 bg-primary rounded-full" />
                 You Might Also Like
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
                 {[...MOCK_VIDEOS, ...MOCK_VIDEOS].slice(0, 10).map((video, idx) => (
                     <VideoCard
                         key={`more-${video.id}-${idx}`}

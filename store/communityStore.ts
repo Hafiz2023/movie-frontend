@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { Post } from '@/types';
 
 interface CommunityState {
@@ -51,22 +52,29 @@ const INITIAL_POSTS: Post[] = [
     }
 ];
 
-export const useCommunityStore = create<CommunityState>((set) => ({
-    posts: INITIAL_POSTS,
-    addPost: (postData) => set((state) => ({
-        posts: [{
-            id: Math.max(0, ...state.posts.map(p => p.id)) + 1,
-            avatar: postData.user[0].toUpperCase(),
-            time: "Just now",
-            likes: 0,
-            comments: 0,
-            ...postData
-        }, ...state.posts]
-    })),
-    deletePost: (id) => set((state) => ({
-        posts: state.posts.filter(p => p.id !== id)
-    })),
-    likePost: (id) => set((state) => ({
-        posts: state.posts.map(p => p.id === id ? { ...p, likes: p.likes + 1 } : p)
-    }))
-}));
+export const useCommunityStore = create<CommunityState>()(
+    persist(
+        (set) => ({
+            posts: INITIAL_POSTS,
+            addPost: (postData) => set((state) => ({
+                posts: [{
+                    id: Math.max(0, ...state.posts.map(p => p.id)) + 1,
+                    avatar: postData.user[0].toUpperCase(),
+                    time: "Just now",
+                    likes: 0,
+                    comments: 0,
+                    ...postData
+                }, ...state.posts]
+            })),
+            deletePost: (id) => set((state) => ({
+                posts: state.posts.filter(p => p.id !== id)
+            })),
+            likePost: (id) => set((state) => ({
+                posts: state.posts.map(p => p.id === id ? { ...p, likes: p.likes + 1 } : p)
+            }))
+        }),
+        {
+            name: 'community-storage',
+        }
+    )
+);

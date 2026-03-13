@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Providers } from "@/components/Providers";
+import LiveChatWidget from "@/components/ui/LiveChatWidget";
 
 export const metadata: Metadata = {
   title: "TUBE Video App - Watch Premium Videos",
@@ -25,6 +26,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <LiveChatWidget />
           <ToastContainer theme="dark" position="bottom-right" />
         </Providers>
       </body>

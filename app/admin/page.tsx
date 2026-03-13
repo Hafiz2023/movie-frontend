@@ -7,7 +7,6 @@ import {
     Plus,
     Menu,
     Bell,
-    Search,
     Clock,
     Sparkles,
 } from 'lucide-react';
@@ -59,10 +58,31 @@ const tabLabels: Record<string, { title: string; description: string }> = {
 };
 
 export default function AdminPage() {
-    const [videos, setVideos] = useState<AdminVideo[]>(MOCK_VIDEOS as unknown as AdminVideo[]);
+    const [videos, setVideos] = useState<AdminVideo[]>([]);
     const { posts } = useCommunityStore();
     const [activeTab, setActiveTab] = useState<'videos' | 'community' | 'messages'>('videos');
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    // Fetch initial videos from API
+    useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                const res = await fetch('/api/admin/videos');
+                if (res.ok) {
+                    const data = await res.json();
+                    setVideos(data);
+                } else {
+                    console.error('Failed to fetch videos from DB');
+                    // Fallback to initial mock data if no db is provided
+                    setVideos(MOCK_VIDEOS as unknown as AdminVideo[]);
+                }
+            } catch (error) {
+                console.error('Error fetching videos:', error);
+                setVideos(MOCK_VIDEOS as unknown as AdminVideo[]);
+            }
+        };
+        fetchVideos();
+    }, []);
 
     // Modal State
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -107,28 +127,50 @@ export default function AdminPage() {
     const handleSave = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
 
-        if (currentVideo) {
-            setVideos(prev =>
-                prev.map(v => (v.id === currentVideo.id ? { ...v, ...formData } : v))
-            );
-            toast.success('Video updated successfully! 🎬');
-        } else {
-            const newVideo = {
-                id: Math.max(...videos.map(v => v.id)) + 1,
-                ...formData,
-                views: '0',
-                likes: '0',
-                author: 'Admin',
-                author_avatar: 'https://github.com/shadcn.png',
-                date: 'Just now',
-                duration: '10:00',
-                description: 'Uploaded via Admin Panel',
-                tags: [],
-            };
-            setVideos(prev => [newVideo, ...prev]);
-            toast.success('Video uploaded successfully! 🎉');
+        try {
+            if (currentVideo) {
+                // Update functionality (PUT)
+                const res = await fetch(`/api/admin/videos/${currentVideo.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: formData.title,
+                        categoryName: formData.category,
+                        thumbnail_url: formData.thumbnail_url,
+                        video_url: formData.video_url,
+                    }),
+                });
+
+                if (!res.ok) throw new Error('Update failed');
+                const updatedVideo = await res.json();
+
+                setVideos((prev) =>
+                    prev.map((v) => (v.id === currentVideo.id ? { ...v, ...updatedVideo } : v))
+                );
+                toast.success('Video updated successfully! 🎬');
+            } else {
+                // Create functionality (POST)
+                const res = await fetch('/api/admin/videos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: formData.title,
+                        categoryName: formData.category,
+                        thumbnail_url: formData.thumbnail_url,
+                        video_url: formData.video_url,
+                    }),
+                });
+
+                if (!res.ok) throw new Error('Create failed');
+                const newVideo = await res.json();
+
+                setVideos((prev) => [newVideo, ...prev]);
+                toast.success('Video uploaded successfully! 🎉');
+            }
+        } catch (error) {
+            console.error('Error in save operation:', error);
+            toast.error('Failed to save the video.');
         }
 
         setIsLoading(false);
@@ -138,10 +180,20 @@ export default function AdminPage() {
     const handleDelete = async () => {
         if (!currentVideo) return;
         setIsLoading(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
 
-        setVideos(prev => prev.filter(v => v.id !== currentVideo.id));
-        toast.success('Video deleted successfully');
+        try {
+            const res = await fetch(`/api/admin/videos/${currentVideo.id}`, {
+                method: 'DELETE',
+            });
+
+            if (!res.ok) throw new Error('Delete failed');
+
+            setVideos((prev) => prev.filter((v) => v.id !== currentVideo.id));
+            toast.success('Video deleted successfully from Database');
+        } catch (error) {
+            console.error('Error deleting video:', error);
+            toast.error('Failed to delete the video.');
+        }
 
         setIsLoading(false);
         setIsDeleteDialogOpen(false);
@@ -177,7 +229,6 @@ export default function AdminPage() {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTab]);
 
     const currentTabInfo = tabLabels[activeTab];
@@ -195,7 +246,7 @@ export default function AdminPage() {
                 <main className="flex-1 overflow-y-auto scrollbar-hide">
                     {/* Top Bar */}
                     <div className="sticky top-0 z-20 bg-background/80 backdrop-blur-xl border-b border-border/50">
-                        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4">
+                        <div className=" mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4">
                             <div className="flex items-center gap-3">
                                 <Button
                                     variant="ghost"
@@ -217,7 +268,7 @@ export default function AdminPage() {
                                     <Bell className="h-4.5 w-4.5" />
                                     <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-destructive rounded-full animate-pulse" />
                                 </Button>
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-xs font-bold text-primary-foreground shadow-sm">
+                                <div className="w-8 h-8 rounded-full from-primary to-primary/60 flex items-center justify-center text-xs font-bold text-primary-foreground shadow-sm">
                                     A
                                 </div>
                             </div>
@@ -225,7 +276,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Content */}
-                    <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8 flex flex-col gap-4 sm:gap-6 md:gap-8">
+                    <div className=" mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8 flex flex-col gap-4 sm:gap-6 md:gap-8">
                         {/* Page Header */}
                         <motion.div
                             key={activeTab}

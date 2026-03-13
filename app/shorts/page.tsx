@@ -20,12 +20,12 @@ export default function ShortsPage() {
     return (
         <div className="min-h-screen bg-background relative overflow-hidden">
             {/* Ambient Background Effects */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] -z-10" />
+            <div className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-primary/10 rounded-full blur-[80px] sm:blur-[100px] -z-10" />
+            <div className="absolute bottom-0 left-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-blue-500/10 rounded-full blur-[80px] sm:blur-[100px] -z-10" />
 
-            <div className="container mx-auto px-4 py-8 max-w-[1800px]">
+            <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8 max-w-[1800px]">
                 {/* Header Section */}
-                <header className="mb-10">
+                <header className="mb-6 sm:mb-8 md:mb-10">
                     <ShortsHeader
                         searchQuery={searchQuery}
                         onSearchChange={setSearchQuery}

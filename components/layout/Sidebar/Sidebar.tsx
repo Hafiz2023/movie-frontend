@@ -39,6 +39,9 @@ const Sidebar = ({ className }: SidebarProps) => {
         { name: 'Community', href: '/community', icon: Users },
         { name: 'Pornstars', href: '/models', icon: Star },
         { name: 'Live Cams', href: '/live', icon: Flame, pulse: true },
+        { name: 'Channels', href: '/channels', icon: Users },
+        { name: 'Playlists', href: '/playlists', icon: Film },
+        { name: 'VR Videos', href: '/vr', icon: Flame },
     ];
 
     return (

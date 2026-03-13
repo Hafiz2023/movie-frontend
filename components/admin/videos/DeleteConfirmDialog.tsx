@@ -17,7 +17,7 @@ export default function DeleteConfirmDialog({ isOpen, onOpenChange, title, onDel
     return (
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-md p-0 overflow-hidden bg-card/95 backdrop-blur-xl border-border/50">
-                <div className="h-1 bg-gradient-to-r from-destructive via-red-500 to-orange-500" />
+                <div className="h-1  from-destructive via-red-500 to-orange-500" />
                 <div className="p-4 sm:p-6">
                     <DialogHeader className="flex-col sm:flex-row items-start gap-3 sm:gap-4">
                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-destructive/10 flex items-center justify-center shrink-0 border border-destructive/20">

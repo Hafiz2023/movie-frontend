@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, LogOut, LayoutDashboard, Home, Film, List, Radio, Star, Users, Image as ImageIcon, Glasses } from 'lucide-react';
+import { X, LogOut, LayoutDashboard, Home, Film, List, Radio, Star, Users, Image as ImageIcon, Glasses, ListVideo } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import useAuthStore from '@/store/authStore';
 
@@ -19,9 +19,11 @@ const navLinks = [
     { name: 'Categories', href: '/categories', icon: List },
     { name: 'Live Cams', href: '/live', icon: Radio },
     { name: 'Pornstars', href: '/models', icon: Star },
+    { name: 'Channels', href: '/channels', icon: Users },
+    { name: 'Playlists', href: '/playlists', icon: ListVideo },
     { name: 'Community', href: '/community', icon: Users },
     { name: 'Photos', href: '/photos', icon: ImageIcon },
-    { name: 'VR', href: '/videos/vr', icon: Glasses },
+    { name: 'VR', href: '/vr', icon: Glasses },
 ];
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {

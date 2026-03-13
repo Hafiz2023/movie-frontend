@@ -33,7 +33,7 @@ export default function Error({
                 </svg>
             </div>
             <div className="space-y-3 max-w-md">
-                <h2 className="text-4xl font-black tracking-tight bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">Something went wrong!</h2>
+                <h2 className="text-4xl font-black tracking-tight  from-foreground to-foreground/70 bg-clip-text text-transparent">Something went wrong!</h2>
                 <p className="text-muted-foreground text-lg">
                     We apologize for the inconvenience. Our team has been notified and we are working to fix this.
                 </p>

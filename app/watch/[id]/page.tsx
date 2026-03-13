@@ -17,8 +17,6 @@ export default function WatchPage() {
     const { id } = useParams();
     const videoId = Number(id);
     const video = MOCK_VIDEOS.find(v => v.id === videoId) || MOCK_VIDEOS[0];
-    const [isLiked, setIsLiked] = useState(false);
-    const [isDisliked, setIsDisliked] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
 
     // Mock images for the slider (simulating gallery)
@@ -32,9 +30,9 @@ export default function WatchPage() {
     return (
         <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
             {/* Ambient Background Glow */}
-            <div className="absolute top-0 left-0 w-full h-[80vh] overflow-hidden -z-10 bg-black">
+            <div className="absolute top-0 left-0 w-full h-[60vh] sm:h-[80vh] overflow-hidden -z-10 bg-black">
                 <div
-                    className="absolute inset-0 opacity-30 blur-[120px] scale-110"
+                    className="absolute inset-0 opacity-30 blur-[80px] sm:blur-[120px] scale-110"
                     style={{
                         backgroundImage: `url(${video.thumbnail_url})`,
                         backgroundSize: 'cover',
@@ -44,10 +42,10 @@ export default function WatchPage() {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-background/80 to-background" />
             </div>
 
-            <div className="max-w-[1800px] mx-auto w-full p-4 md:p-6 lg:p-8 space-y-8">
-                <div className="flex flex-col lg:flex-row gap-8">
+            <div className="max-w-[1800px] mx-auto w-full p-3 sm:p-4 md:p-6 lg:p-8 space-y-6 sm:space-y-8">
+                <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
                     {/* Left Column: Video Player, Info, Comments */}
-                    <div className="flex-1 w-full lg:w-[72%] space-y-6">
+                    <div className="flex-1 w-full lg:w-[72%] space-y-4 sm:space-y-6">
                         <VideoPlayer
                             thumbnailUrl={video.thumbnail_url}
                             videoUrl={video.video_url}
@@ -56,13 +54,7 @@ export default function WatchPage() {
                             onPlay={() => setIsPlaying(true)}
                         />
 
-                        <VideoInfoHeader
-                            video={video}
-                            isLiked={isLiked}
-                            isDisliked={isDisliked}
-                            onLike={() => { setIsLiked(!isLiked); setIsDisliked(false); }}
-                            onDislike={() => { setIsDisliked(!isDisliked); setIsLiked(false); }}
-                        />
+                        <VideoInfoHeader video={video} />
 
                         <VideoDescription
                             views={video.views}
@@ -72,11 +64,11 @@ export default function WatchPage() {
                         />
 
                         {/* Scene Gallery */}
-                        <div className="pt-4">
+                        <div className="pt-2 sm:pt-4">
                             <PhotoSlider images={galleryImages} title="Scene Gallery" />
                         </div>
 
-                        <CommentsSection />
+                        <CommentsSection videoId={video.id} />
                     </div>
 
                     {/* Right Column: Recommendations */}

@@ -126,6 +126,7 @@ export interface AdminVideo {
 
 export interface VideoFormData {
     title: string;
+    description?: string;
     category: string;
     thumbnail_url: string;
     video_url: string;

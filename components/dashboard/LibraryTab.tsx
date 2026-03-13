@@ -1,46 +1,40 @@
-
 import React from 'react';
-import VideoCard from '@/components/video/VideoCard';
-import { MOCK_VIDEOS } from '@/utils/mockData';
+import HistorySection from './library/HistorySection';
+import LikedSection from './library/LikedSection';
+import { motion } from 'framer-motion';
+import { LayoutGrid } from 'lucide-react';
 
 export default function LibraryTab() {
-    const historyVideos = MOCK_VIDEOS.slice(0, 4);
-    const likedVideos = MOCK_VIDEOS.slice(2, 6);
-
     return (
-        <div className="space-y-8">
-            <section>
-                <div className="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 className="text-xl font-semibold">Continue Watching</h2>
-                        <p className="text-sm text-muted-foreground">Pick up where you left off.</p>
+        <div className="space-y-8 pb-10">
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-card/40 p-6 rounded-2xl border border-border/50 backdrop-blur-md relative overflow-hidden"
+            >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+                <div className="relative z-10 flex items-center gap-4 w-full">
+                    <div className="p-3 bg-primary/20 rounded-xl border border-primary/30 shrink-0">
+                        <LayoutGrid className="w-8 h-8 text-primary" />
                     </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {historyVideos.map((video) => (
-                        <div key={video.id} className="relative group">
-                            <VideoCard video={video} />
-                            <div className="absolute bottom-[88px] left-0 right-0 h-1 bg-background/50 mx-3 rounded-full overflow-hidden z-10">
-                                <div className="h-full bg-primary w-[45%]" />
-                            </div>
+                    <div>
+                        <div className="flex items-center gap-2 mb-1">
+                            <h2 className="text-sm font-bold uppercase tracking-widest text-primary/70">Personal Collection</h2>
                         </div>
-                    ))}
-                </div>
-            </section>
-            <section>
-                <div className="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 className="text-xl font-semibold">Liked Videos</h2>
-                        <p className="text-sm text-muted-foreground">Your collection of favorites.</p>
+                        <h1 className="text-2xl sm:text-3xl font-extrabold text-foreground">
+                            My Library
+                        </h1>
+                        <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+                            Access everything you&apos;ve watched, liked, and saved for later.
+                        </p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {likedVideos.map((video) => (
-                        <VideoCard key={video.id} video={video} />
-                    ))}
-                </div>
-            </section>
+            </motion.div>
+
+            <div className="space-y-10">
+                <HistorySection />
+                <LikedSection />
+            </div>
         </div>
     );
 }
-

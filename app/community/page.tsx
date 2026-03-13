@@ -24,11 +24,11 @@ export default function CommunityPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background text-foreground pb-20">
+        <div className="min-h-screen bg-background text-foreground pb-10 sm:pb-20">
             {/* Header */}
             <CommunityHeader onCreatePost={() => setIsCreateModalOpen(true)} />
 
-            <div className="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                 {/* Left Sidebar - Filters */}
                 <CommunitySidebar filter={filter} setFilter={setFilter} />
 

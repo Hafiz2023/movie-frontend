@@ -15,7 +15,6 @@ const MOCK_PHOTOS: Photo[] = [
     { id: 6, src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200", likes: 4500, comments: 210, user: "BeautyQueen", title: "Fresh Face", tags: ["Beauty", "Closeup"] },
     { id: 7, src: "https://images.unsplash.com/photo-1503104891248-eb5a3533646e?q=80&w=1200", likes: 670, comments: 34, user: "WildSoul", title: "Dark Aesthetic", tags: ["Moody", "Art"] },
     { id: 8, src: "https://images.unsplash.com/photo-1464863979621-258859e62245?q=80&w=1200", likes: 980, comments: 41, user: "ChicLook", title: "Summer Breeze", tags: ["Summer", "Lifestyle"] },
-    // Doubling data for masonry effect
     { id: 9, src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200", likes: 1100, comments: 55, user: "RunwayStar", title: "High Fashion", tags: ["Fashion", "Runway"] },
     { id: 10, src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200", likes: 2200, comments: 110, user: "KPopStyle", title: "Seoul Street", tags: ["Street", "Colors"] },
     { id: 11, src: "https://images.unsplash.com/photo-1529139574466-a302d20525b5?q=80&w=1200", likes: 880, comments: 20, user: "IndieSpirit", title: "Festival Look", tags: ["Music", "Festival"] },
@@ -27,28 +26,28 @@ export default function PhotosPage() {
     const [filter, setFilter] = useState('Trending');
 
     return (
-        <div className="min-h-screen bg-background text-foreground pb-20">
+        <div className="min-h-screen bg-background text-foreground pb-10 sm:pb-20">
             {/* Header Section */}
-            <div className="bg-background/80 backdrop-blur-md border-b border-border sticky top-16 z-30 py-4 sm:py-6 px-4">
-                <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="bg-background/80 backdrop-blur-md border-b border-border sticky top-16 z-30 py-3 sm:py-4 md:py-6 px-3 sm:px-4">
+                <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight mb-1 flex items-center gap-2">
-                            <Camera className="w-8 h-8 text-primary" />
+                        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight mb-0.5 sm:mb-1 flex items-center gap-2">
+                            <Camera className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary" />
                             Photo Galleries
                         </h1>
-                        <p className="text-muted-foreground text-sm">Exclusive high-resolution 4K photos from top creators.</p>
+                        <p className="text-muted-foreground text-xs sm:text-sm">Exclusive high-resolution 4K photos from top creators.</p>
                     </div>
 
                     {/* Filter Tabs Component */}
-                    <div className="w-full md:w-auto">
+                    <div className="w-full sm:w-auto">
                         <PhotoFilter currentFilter={filter} setFilter={setFilter} />
                     </div>
                 </div>
             </div>
 
             {/* Masonry Grid */}
-            <div className="container mx-auto px-4 py-8">
-                <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
+            <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8">
+                <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
                     {MOCK_PHOTOS.map((photo, index) => (
                         <PhotoCard
                             key={photo.id}

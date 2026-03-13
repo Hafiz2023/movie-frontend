@@ -8,7 +8,7 @@ const FooterBottom = () => {
 
     return (
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] text-muted-foreground/60">
-            <div className="flex flex-col gap-1 items-center md:items-start">
+            <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
                 <p>&copy; {currentYear} MovieApp. All rights reserved.</p>
                 <p>Designed for premium experience.</p>
             </div>
@@ -19,7 +19,7 @@ const FooterBottom = () => {
                 <PaymentIcon src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" alt="PayPal" />
             </div>
 
-            <p className="max-w-md text-center md:text-right leading-relaxed">
+            <p className="max-w-md text-[11px] text-muted-foreground/60 text-center md:text-right leading-relaxed shrink-0">
                 All models appearing on this website are 18 years or older.
                 By entering this site you swear that you are of legal age in your area to view adult material.
             </p>
@@ -34,7 +34,7 @@ function PaymentIcon({ src, alt }: { src: string; alt: string }) {
             alt={alt}
             width={60}
             height={16}
-            className="h-4 w-auto opacity-50 grayscale hover:grayscale-0 transition-all pointer-events-none"
+            className="h-4 w-auto grayscale hover:grayscale-0 transition-all pointer-events-none"
             unoptimized
         />
     );

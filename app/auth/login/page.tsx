@@ -98,7 +98,7 @@ export default function LoginPage() {
 
             {/* Left Side - Hero / Visuals (Hidden on mobile) */}
             <div className="hidden lg:flex w-1/2 relative bg-black items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-10 bg-gradient-to-b from-primary/40 to-black/80 mix-blend-multiply" />
+                <div className="absolute inset-0 z-10  from-primary/40 to-black/80 mix-blend-multiply" />
                 <Image
                     src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop"
                     alt="Movie Theater"
