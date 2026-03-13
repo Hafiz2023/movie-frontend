@@ -1,3 +1,9 @@
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Live" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 
 'use client';
 import React, { useState } from 'react';

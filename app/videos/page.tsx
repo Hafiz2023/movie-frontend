@@ -1,4 +1,11 @@
 'use client';
+
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Videos" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React, { useState } from 'react';
 import { MOCK_VIDEOS } from '@/utils/mockData';
 import VideoCard from '@/components/video/VideoCard';

@@ -1,3 +1,9 @@
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Parental controls" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React from 'react';
 import { ShieldAlert, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';

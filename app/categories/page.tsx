@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Categories" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React from 'react';
 import { MOCK_SHORTS, MOCK_VIDEOS } from '@/utils/mockData';
 import { CategoriesHeader, CategoriesGrid } from '@/components/categories';

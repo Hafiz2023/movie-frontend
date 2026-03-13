@@ -1,3 +1,9 @@
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Studios" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React from 'react';
 import Sidebar from '@/components/layout/Sidebar';
 import { Camera } from 'lucide-react';

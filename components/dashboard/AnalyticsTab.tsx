@@ -1,8 +1,6 @@
 import React from 'react';
 import { Eye } from 'lucide-react';
-import AnalyticsStats from './analytics/AnalyticsStats';
-import ViewsOverTimeChart from './analytics/ViewsOverTimeChart';
-import TrafficSourcesChart from './analytics/TrafficSourcesChart';
+import { AnalyticsStats, ViewsOverTimeChart, TrafficSourcesChart } from './analytics';
 import { motion } from 'framer-motion';
 
 export default function AnalyticsTab() {

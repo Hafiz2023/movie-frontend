@@ -2,8 +2,7 @@
 
 import React from 'react';
 import useAuthStore from '@/store/authStore';
-import ProfileSettings from './settings/ProfileSettings';
-import PasswordSettings from './settings/PasswordSettings';
+import { ProfileSettings, PasswordSettings } from './settings';
 import { motion } from 'framer-motion';
 import { Settings, Sparkles } from 'lucide-react';
 

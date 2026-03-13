@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Search" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { MOCK_VIDEOS } from '@/utils/mockData';

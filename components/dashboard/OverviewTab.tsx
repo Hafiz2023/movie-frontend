@@ -1,7 +1,5 @@
 import React from 'react';
-import OverviewStats from './overview/OverviewStats';
-import RecentActivity from './overview/RecentActivity';
-import RecommendedCarousel from './overview/RecommendedCarousel';
+import { OverviewStats, RecentActivity, RecommendedCarousel } from './overview';
 
 export default function OverviewTab() {
     return (

@@ -1,4 +1,11 @@
 'use client';
+
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Contact" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React from 'react';
 import { ContactHero } from '@/components/contact/ContactHero';
 import { ContactForm } from '@/components/contact/ContactForm';

@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Auth - Register" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React from 'react';
 import { UserPlus, User, Mail, Lock } from 'lucide-react';
 import useRegisterForm from '@/hooks/useRegisterForm';

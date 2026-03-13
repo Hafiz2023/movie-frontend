@@ -3,9 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import useAuthStore from '@/store/authStore';
-import TicketDialog, { Ticket } from './contact/TicketDialog';
-import ContactForm from './contact/ContactForm';
-import TicketHistory from './contact/TicketHistory';
+import { TicketDialog, Ticket, ContactForm, TicketHistory } from './contact';
 import { motion } from 'framer-motion';
 import { MessageSquareText } from 'lucide-react';
 

@@ -1,4 +1,11 @@
 'use client';
+
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Videos - [category]" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React from 'react';
 import { useParams } from 'next/navigation';
 import { MOCK_VIDEOS } from '@/utils/mockData';

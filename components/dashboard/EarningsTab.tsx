@@ -1,8 +1,7 @@
 import React from 'react';
 import { DollarSign } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import EarningsStats from './earnings/EarningsStats';
-import RecentPayouts from './earnings/RecentPayouts';
+import { EarningsStats, RecentPayouts } from './earnings';
 import { motion } from 'framer-motion';
 
 export default function EarningsTab() {

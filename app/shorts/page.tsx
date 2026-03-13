@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Shorts" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React, { useState } from 'react';
 import { MOCK_SHORTS } from '@/utils/mockData';
 import { ShortsHeader, ShortsCategoryBar, ShortsGrid } from '@/components/shorts';

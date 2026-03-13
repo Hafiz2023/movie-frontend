@@ -1,6 +1,5 @@
 import React from 'react';
-import HistorySection from './library/HistorySection';
-import LikedSection from './library/LikedSection';
+import { HistorySection, LikedSection } from './library';
 import { motion } from 'framer-motion';
 import { LayoutGrid } from 'lucide-react';
 

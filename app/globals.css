@@ -72,6 +72,10 @@
   --ring: 346 87% 43%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--color-foreground);
   background: var(--color-background);

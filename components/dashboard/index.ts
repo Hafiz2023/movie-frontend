@@ -1,0 +1,11 @@
+export { default as AnalyticsTab } from './AnalyticsTab';
+export { default as BillingTab } from './BillingTab';
+export { default as ContactTab } from './ContactTab';
+export { default as DashboardHeader } from './DashboardHeader';
+export { default as EarningsTab } from './EarningsTab';
+export { default as FansTab } from './FansTab';
+export { default as LibraryTab } from './LibraryTab';
+export { default as MessagesTab } from './MessagesTab';
+export { default as OverviewTab } from './OverviewTab';
+export { default as SettingsTab } from './SettingsTab';
+export { default as StudioTab } from './StudioTab';

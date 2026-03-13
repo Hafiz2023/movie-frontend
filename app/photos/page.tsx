@@ -1,4 +1,11 @@
 'use client';
+
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Photos" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React, { useState } from 'react';
 import { Camera } from 'lucide-react';
 import { PhotoCard } from '@/components/photos/PhotoCard';

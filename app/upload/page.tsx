@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Upload" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React from 'react';
 import Sidebar from '@/components/layout/Sidebar';
 import { UploadCloud } from 'lucide-react';

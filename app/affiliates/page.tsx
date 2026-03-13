@@ -1,3 +1,9 @@
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Affiliates" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
 import React from 'react';
 import { DollarSign, BarChart, Users, ArrowRight } from 'lucide-react';
 import Link from 'next/link';

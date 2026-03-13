@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Users, Star } from 'lucide-react';
-import FanStats from './fans/FanStats';
-import SubscriberList from './fans/SubscriberList';
+import { FanStats, SubscriberList } from './fans';
 import { motion } from 'framer-motion';
 
 export default function FansTab() {

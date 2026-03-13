@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Admin" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React, { useState, useEffect } from 'react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { MOCK_VIDEOS } from '@/utils/mockData';

@@ -35,6 +35,7 @@ export default function StudioTab() {
                 const res = await fetch(`/api/videos?userId=${user.id}`);
                 if (res.ok) {
                     const data = await res.json();
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     const mappedData = data.map((v: any) => ({
                         ...v,
                         category: typeof v.category === 'object' && v.category !== null ? v.category.name || 'Uncategorized' : v.category || 'Uncategorized',

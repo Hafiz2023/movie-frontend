@@ -1,6 +1,5 @@
 import React from 'react';
-import ConversationList, { ChatPreview } from './messages/ConversationList';
-import ChatArea from './messages/ChatArea';
+import { ConversationList, ChatPreview, ChatArea } from './messages';
 import { motion } from 'framer-motion';
 
 export default function MessagesTab() {

@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PAGE OVERVIEW: 
+ * This page component handles the rendering and functionality for the "Trust" section.
+ * It connects the necessary data stores and components to provide a smooth user experience.
+ */
+
+
 import React from 'react';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import { ShieldCheck, UserCheck, EyeOff, Lock } from 'lucide-react';
