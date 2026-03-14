@@ -2,3 +2,120 @@
 > movie-frontend@0.1.0 build
 > next build
 
+node.exe : ΓÜá Warning: Next.js 
+inferred your workspace root, 
+but it may not be correct.
+At C:\Program 
+Files\nodejs\npm.ps1:29 char:3
++   & $NODE_EXE $NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : No 
+   tSpecified: (ΓÜá Warning: Ne  
+  ...not be correct.:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId : Na 
+   tiveCommandError
+ 
+ We detected multiple lockfiles 
+and selected the directory of 
+C:\Users\HAFIZ 
+ADIL\package-lock.json as the 
+root directory.
+ To silence this warning, set 
+`turbopack.root` in your Next.js 
+config, or consider removing one 
+of the lockfiles if it's not 
+needed.
+   See https://nextjs.org/docs/ap
+p/api-reference/config/next-confi
+g-js/turbopack#root-directory 
+for more information.
+ Detected additional lockfiles: 
+   * C:\Users\HAFIZ ADIL\OneDrive
+\Desktop\Movie\movie-frontend\pac
+kage-lock.json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ΓÜá The "middleware" file 
+convention is deprecated. Please 
+use "proxy" instead. Learn more: 
+https://nextjs.org/docs/messages/
+middleware-to-proxy
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 17.0s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/48) ...
+  Generating static pages using 7 workers (12/48) 
+  Generating static pages using 7 workers (24/48) 
+  Generating static pages using 7 workers (36/48) 
+Γ£ô Generating static pages using 7 workers (48/48) in 3.2s
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /2257
+Γö£ Γùï /about
+Γö£ Γùï /admin
+Γö£ Γùï /affiliates
+Γö£ ╞Æ /api/admin/videos
+Γö£ ╞Æ /api/admin/videos/[id]
+Γö£ ╞Æ /api/auth/login
+Γö£ ╞Æ /api/auth/register
+Γö£ ╞Æ /api/categories
+Γö£ ╞Æ /api/contact
+Γö£ ╞Æ /api/health
+Γö£ ╞Æ /api/orders
+Γö£ ╞Æ /api/premium/subscribe
+Γö£ ╞Æ /api/videos
+Γö£ ╞Æ /api/videos/[id]
+Γö£ Γùï /auth/login
+Γö£ Γùï /auth/register
+Γö£ Γùï /billing
+Γö£ Γùï /categories
+Γö£ ╞Æ /categories/[slug]
+Γö£ Γùï /channels
+Γö£ Γùï /checkout
+Γö£ Γùï /community
+Γö£ Γùï /contact
+Γö£ Γùï /cookies
+Γö£ Γùï /dashboard
+Γö£ Γùï /dmca
+Γö£ Γùï /faq
+Γö£ Γùï /live
+Γö£ Γùï /models
+Γö£ ╞Æ /models/[id]
+Γö£ Γùï /new-releases
+Γö£ Γùï /parental-controls
+Γö£ Γùï /photos
+Γö£ Γùï /playlists
+Γö£ Γùï /popular
+Γö£ Γùï /premium
+Γö£ Γùï /press
+Γö£ Γùï /privacy
+Γö£ Γùï /search
+Γö£ Γùï /shorts
+Γö£ ╞Æ /shorts/watch/[id]
+Γö£ Γùï /studios
+Γö£ Γùï /subscription
+Γö£ Γùï /support
+Γö£ Γùï /tags
+Γö£ Γùï /terms
+Γö£ Γùï /top-rated
+Γö£ Γùï /trending
+Γö£ Γùï /trust
+Γö£ Γùï /upload
+Γö£ Γùï /videos
+Γö£ ╞Æ /videos/[category]
+Γö£ Γùï /vr
+Γöö ╞Æ /watch/[id]
+
+
+╞Æ Proxy (Middleware)
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
